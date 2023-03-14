@@ -9,10 +9,13 @@
     "@portabletext/react": "^2.0.2",
     "@sanity/image-url": "^1.0.2",
     "@sanity/vision": "^3.0.0",
+    "framer-motion": "^10.2.5",
     "next": "latest",
     "next-sanity": "^4.1.5",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "react-simple-typewriter": "^5.0.1",
+    "react-social-icons": "^5.15.0",
     "sanity": "^3.0.0",
     "styled-components": "^5.2.0"
   },

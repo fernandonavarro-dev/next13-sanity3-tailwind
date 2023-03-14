@@ -1,3 +1,24 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+html,
+body,
+#__next {
+  height: 100%;
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+  margin: 0;
+}
+
+@layer components {
+  .heroButton {
+    @apply rounded-full border border-[#242424] px-6 py-6 text-sm tracking-widest text-gray-500 transition-all hover:border-[#ff25e2]/40 hover:text-[#ff25e2]/40;
+  }
+
+  .contactFields {
+    @apply rounded-sm border-b border-[#242424] bg-slate-400/10 px-6 py-4 text-gray-500 outline-none transition-all placeholder:text-gray-500 hover:border-[#ff25e2] focus:border-[#ff25e2]/40 focus:text-[#ff25e2]/40;
+  }
+}
