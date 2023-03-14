@@ -40,19 +40,59 @@ export default function Hero({}: Props) {
           </span>
         </h2>
         <div>
-          <Link href="#about">
+          <Link
+            href="#about"
+            onClick={() => {
+              const element = document.getElementById('about');
+              if (element) {
+                element.scrollIntoView({ behavior: 'smooth' });
+              }
+            }}
+          >
             <button className="heroButton">About</button>
           </Link>
-          <Link href="#experience">
+          <Link
+            href="#experience"
+            onClick={() => {
+              const element = document.getElementById('experience');
+              if (element) {
+                element.scrollIntoView({ behavior: 'smooth' });
+              }
+            }}
+          >
             <button className="heroButton">Experience</button>
           </Link>
-          <Link href="#skills">
+          <Link
+            href="#skills"
+            onClick={() => {
+              const element = document.getElementById('skills');
+              if (element) {
+                element.scrollIntoView({ behavior: 'smooth' });
+              }
+            }}
+          >
             <button className="heroButton">Skills</button>
           </Link>
-          <Link href="#projects">
+          <Link
+            href="#projects"
+            onClick={() => {
+              const element = document.getElementById('projects');
+              if (element) {
+                element.scrollIntoView({ behavior: 'smooth' });
+              }
+            }}
+          >
             <button className="heroButton">Projects</button>
           </Link>
-          <Link href="#contact">
+          <Link
+            href="#contact"
+            onClick={() => {
+              const element = document.getElementById('contact');
+              if (element) {
+                element.scrollIntoView({ behavior: 'smooth' });
+              }
+            }}
+          >
             <button className="heroButton">Contact</button>
           </Link>
         </div>

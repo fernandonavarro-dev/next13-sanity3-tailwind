@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-// import Link from 'next/link'
+import Link from 'next/link';
 import React from 'react';
 import { SocialIcon } from 'react-social-icons';
 
@@ -27,7 +27,6 @@ export default function Header({}: Props) {
             duration: 1.5,
           }}
         >
-          {/* <div className="flex flex-row items-center"> */}
           <SocialIcon
             title="My LinkedIn"
             url="https://www.linkedin.com/in/fernando-n-dev/"
@@ -44,7 +43,6 @@ export default function Header({}: Props) {
             className="rounded-full hover:bg-[#ff25e2]/20"
           />
         </motion.div>
-        {/* </div> */}
         {/* <Link href="#contact"> */}
         <motion.div
           className="flex cursor-pointer flex-row items-center text-gray-300"
@@ -62,23 +60,21 @@ export default function Header({}: Props) {
             duration: 1.5,
           }}
         >
-          {/* <div className="flex cursor-pointer flex-row items-center text-gray-300"> */}
           <SocialIcon
             title="Email me"
             network="email"
             fgColor="gray"
             bgColor="transparent"
             className="cursor-pointer rounded-full hover:bg-[#ff25e2]/20 hover:text-[#ff25e2]"
-            // onClick={(e) => {
-            //   e.preventDefault;
-            //   window.location.href = 'mailto:fn@fn-dev.com';
-            // }}
+            onClick={(e) => {
+              e.preventDefault;
+              window.location.href = 'mailto:fn@fn-dev.com';
+            }}
           />
           <p className="ml-1 hidden text-sm uppercase text-gray-400 md:inline-flex">
             Get in touch
           </p>
         </motion.div>
-        {/* </div> */}
         {/* </Link> */}
       </div>
     </header>
