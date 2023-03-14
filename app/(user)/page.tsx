@@ -1,4 +1,3 @@
-// 'use client';
 import React from 'react';
 // import { groq } from 'next-sanity';
 // import { client } from '../../lib/sanity.client';
@@ -8,7 +7,9 @@ import Hero from '../../components/Hero';
 import About from '../../components/About';
 import Experience from '../../components/Experience';
 import Contact from '../../components/Conatact';
-import Link from 'next/link';
+// import Link from 'next/link';
+import Skills from '../../components/Skills';
+import Projects from '../../components/Projects';
 
 type Props = {};
 
@@ -38,13 +39,13 @@ export default async function HomePage({}: Props) {
         <Experience />
       </section>
 
-      {/* <section id="skills" className="snap-start">
+      <section id="skills" className="snap-start">
         <Skills />
       </section>
 
       <section id="projects" className="snap-start">
         <Projects />
-      </section> */}
+      </section>
 
       <section id="contact" className="snap-start">
         <Contact />
