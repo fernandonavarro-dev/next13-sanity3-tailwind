@@ -29,6 +29,11 @@ export default defineType({
       },
     }),
     defineField({
+      name: 'heroImageUrl',
+      title: 'HeroImageUrl',
+      type: 'string',
+    }),
+    defineField({
       name: 'backgroundInformation',
       title: 'BackgroundInformation',
       type: 'string',
@@ -40,6 +45,11 @@ export default defineType({
       options: {
         hotspot: true,
       },
+    }),
+    defineField({
+      name: 'profilePicUrl',
+      title: 'ProfilePicUrl',
+      type: 'string',
     }),
     defineField({
       name: 'phoneNumber',

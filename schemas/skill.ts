@@ -26,5 +26,10 @@ export default defineType({
         hotspot: true,
       },
     }),
+    defineField({
+      name: 'imageUrl',
+      title: 'ImageUrl',
+      type: 'string',
+    }),
   ],
 });

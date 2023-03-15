@@ -71,7 +71,13 @@ export default function Header({}: Props) {
               window.location.href = 'mailto:fn@fn-dev.com';
             }}
           />
-          <p className="ml-1 hidden text-sm uppercase text-gray-400 md:inline-flex">
+          <p
+            className="ml-1 hidden text-sm uppercase text-gray-400 md:inline-flex p-2 rounded-xl hover:bg-[#ff25e2]/20"
+            onClick={(e) => {
+              e.preventDefault;
+              window.location.href = 'mailto:fn@fn-dev.com';
+            }}
+          >
             Get in touch
           </p>
         </motion.div>

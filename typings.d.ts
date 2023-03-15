@@ -6,65 +6,71 @@ type Base = {
   _updatedAt: string;
 };
 
-interface Post extends Base {
-  author: Author;
-  body: Block[];
-  categories: Category[];
-  mainImage: Image;
-  imageUrl: string;
-  slug: Slug;
-  title: string;
-  description: string;
-}
-
-interface Author extends Base {
-  bio: Block[];
-  image: Image;
-  name: string;
-  slug: Slug;
-}
-
 interface Image {
   _type: 'image';
-  asset: Reference;
+  imageUrl: string;
+  asset: {
+    _ref: string;
+    _type: 'reference';
+  };
 }
 
-interface Reference {
-  _ref: string;
-  _type: 'reference';
+interface PageInfo extends Base {
+  _type: 'pageInfo';
+  address: string;
+  backgroundInformation: string;
+  email: string;
+  roleOne: string;
+  roleTwo: string;
+  heroImage: Image;
+  heroImageUrl: string;
+  name: string;
+  phoneNumber: string;
+  profilePic: Image;
+  profilePicUrl: string;
 }
 
-interface Slug {
-  _type: 'slug';
-  current: string;
-}
-
-interface Block {
-  _key: string;
-  _type: 'block';
-  children: Span[];
-  markDefs: any[];
-  style: 'normal' | 'h1' | 'h2' | 'h3' | 'h4' | 'blockquote';
-}
-
-interface Span {
-  _key: string;
-  _type: 'span';
-  marks: string[];
-  text: string;
-}
-
-interface Category extends Base {
-  description: string;
+interface Technology extends Base {
+  _type: 'skill';
+  image: Image;
+  imageUrl: string;
+  progress: number;
   title: string;
 }
 
-interface MainImage {
-  _type: 'image';
-  asset: Reference;
+interface Skill extends Base {
+  _type: 'skill';
+  image: Image;
+  imageUrl: string;
+  progress: number;
+  title: string;
 }
 
-interface Title {
-  _type: 'string';
-  current: string;
+interface Experience extends Base {
+  _type: 'experience';
+  company: string;
+  companyImage: Image;
+  companyImageUrl: string;
+  dateStarted: Date;
+  dateEnded: Date;
+  presentlyEmployed: boolean;
+  jobTitle: string;
+  points: string[];
+  technologies: Technology[];
+}
+
+interface Project extends Base {
+  title: string;
+  _type: 'project';
+  image: Image;
+  imageUrl: string;
+  linkToBuild: string;
+  summary: string;
+  technologies: Technology[];
+}
+
+interface Social extends Base {
+  _type: 'social';
+  title: string;
+  url: string;
 }
