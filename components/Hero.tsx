@@ -5,9 +5,11 @@ import { Cursor, useTypewriter } from 'react-simple-typewriter';
 
 import BackgroundCircles from './BackgroundCircles';
 
-type Props = {};
+type Props = {
+  pageInfo: PageInfo;
+};
 
-export default function Hero({}: Props) {
+export default function Hero({ pageInfo }: Props) {
   const [text, count] = useTypewriter({
     words: [
       "Hi, I'm Fernando Navarro",
@@ -23,15 +25,15 @@ export default function Hero({}: Props) {
       <BackgroundCircles />
       <img
         className="relative mx-auto h-32 w-32 rounded-full object-cover"
-        src="https://media.discordapp.net/attachments/1068307172158619720/1083607143820824586/IMG-20200906-WA0057.jpg?width=377&height=502"
+        src={pageInfo.heroImageUrl}
         alt=""
       />
       <div className="z-20">
         <h2 className="pb-2 text-sm uppercase tracking-[15px] text-gray-500">
-          React.js Developer
+          {pageInfo.roleOne}
         </h2>
         <h2 className="pb-2 text-sm uppercase tracking-[15px] text-gray-500">
-          AI Prompt engineer
+          {pageInfo.roleTwo}
         </h2>
         <h2>
           <span className="px-10 text-5xl font-semibold lg:text-6xl">

@@ -4,9 +4,12 @@ import React from 'react';
 
 import ExperienceCard from './ExperienceCard';
 
-type Props = {};
+type Props = {
+  experiences: Experience[];
+  skills: Skill[];
+};
 
-export default function Experience({}: Props) {
+export default function Experience({ experiences, skills }: Props) {
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -18,10 +21,13 @@ export default function Experience({}: Props) {
         Experience
       </h3>
       <div className="mt-28 flex w-full snap-x snap-mandatory space-x-5 overflow-x-scroll p-10 scrollbar-thin scrollbar-track-gray-400/20 scrollbar-thumb-[#ff25e2]/20">
-        <ExperienceCard />
-        <ExperienceCard />
-        <ExperienceCard />
-        <ExperienceCard />
+        {experiences.map((experience) => (
+          <ExperienceCard
+            key={experience._id}
+            experience={experience}
+            skills={skills}
+          />
+        ))}
       </div>
     </motion.div>
   );

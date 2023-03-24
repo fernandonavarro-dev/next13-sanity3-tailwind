@@ -1,46 +1,68 @@
 import React from 'react';
-// import { groq } from 'next-sanity';
-// import { client } from '../../lib/sanity.client';
-// import BlogList from '../../components/BlogList';
+import { groq } from 'next-sanity';
+import { client } from '../../lib/sanity.client';
 import Header from '../../components/Header';
 import Hero from '../../components/Hero';
 import About from '../../components/About';
 import Experience from '../../components/Experience';
 import Contact from '../../components/Conatact';
-// import Link from 'next/link';
 import Skills from '../../components/Skills';
 import Projects from '../../components/Projects';
 
-type Props = {};
+type Props = {
+  pageInfo: PageInfo;
+  experience: Experience[];
+  skills: Skill[];
+  projects: Project[];
+  socials: Social[];
+};
 
-// const query = groq`
-//   *[_type=='pageInfo'] {
-//     ...,
-//   } | order(_createdAt desc)
-// `;
+const queryPageInfo = groq`
+  *[_type=='pageInfo'] {
+    ...,
+  } | order(_createdAt desc)
+`;
+const querySocials = groq`
+  *[_type=='social'] {
+    ...,
+  }
+`;
+const queryExperience = groq`
+  *[_type=='experience'] {
+    ...,
+  } | order(dateStarted desc)
+`;
+const querySkills = groq`
+  *[_type=='skill'] {
+    ...,
+  } | order(title desc)
+`;
 
 export default async function HomePage({}: Props) {
-  // const pageInfo = await client.fetch(query);
-  // console.log(pageInfo);
+  const pageInfoArray = await client.fetch(queryPageInfo);
+  const pageInfo = pageInfoArray[0];
+  const socials = await client.fetch(querySocials);
+  const experience = await client.fetch(queryExperience);
+  const skills = await client.fetch(querySkills);
 
   return (
     <div className="z-0 h-screen snap-y snap-mandatory overflow-y-scroll bg-[rgb(36,36,36)] text-white scrollbar overflow-x-hidden scrollbar-track-gray-400/20 scrollbar-thumb-[#ff25e2]/20">
-      <Header />
+      <Header socials={socials} />
 
       <section id="hero" className="snap-center">
-        <Hero />
+        <Hero pageInfo={pageInfo} />
       </section>
 
       <section id="about" className="snap-center">
-        <About />
+        <About pageInfo={pageInfo} />
       </section>
 
       <section id="experience" className="snap-center">
-        <Experience />
+        <Experience experiences={experience} skills={skills} />
       </section>
 
       <section id="skills" className="snap-start">
-        <Skills />
+        <Skills skills={skills} />
       </section>
 
       <section id="projects" className="snap-start">

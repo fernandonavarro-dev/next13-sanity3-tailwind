@@ -1,13 +1,14 @@
 'use client';
-
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import React from 'react';
 import { SocialIcon } from 'react-social-icons';
 
-type Props = {};
+type Props = {
+  socials: Social[];
+};
 
-export default function Header({}: Props) {
+export default function Header({ socials }: Props) {
   return (
     <header className="sticky top-0 z-20 mx-auto max-w-7xl items-start justify-between p-5 xl:items-center">
       <div className="flex items-start justify-between">
@@ -27,21 +28,16 @@ export default function Header({}: Props) {
             duration: 1.5,
           }}
         >
-          <SocialIcon
-            title="My LinkedIn"
-            url="https://www.linkedin.com/in/fernando-n-dev/"
-            fgColor="gray"
-            bgColor="transparent"
-            className="rounded-full hover:bg-[#ff25e2]/20"
-          />
-          <SocialIcon
-            title="My Github"
-            url="https://github.com/fernandonavarro-dev"
-            network="github"
-            fgColor="gray"
-            bgColor="transparent"
-            className="rounded-full hover:bg-[#ff25e2]/20"
-          />
+          {socials.map((social) => (
+            <SocialIcon
+              key={social._id}
+              title={social.title}
+              url={social.url}
+              fgColor="gray"
+              bgColor="transparent"
+              className="rounded-full hover:bg-[#ff25e2]/20"
+            />
+          ))}
         </motion.div>
         {/* <Link href="#contact"> */}
         <motion.div

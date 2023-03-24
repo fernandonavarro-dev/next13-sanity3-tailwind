@@ -1,20 +1,14 @@
 'use client';
-import {
-  SiDigitalocean,
-  SiGithub,
-  SiJavascript,
-  SiMongodb,
-  SiNextdotjs,
-  SiReact,
-  SiTailwindcss,
-} from '@icons-pack/react-simple-icons';
 import { motion } from 'framer-motion';
 import React from 'react';
+import skill from '../schemas/skill';
 
 import Skill from './Skill';
-type Props = {};
+type Props = {
+  skills: Skill[];
+};
 
-export default function Skills({}: Props) {
+export default function Skills({ skills }: Props) {
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -26,27 +20,17 @@ export default function Skills({}: Props) {
         Skills
       </h3>
 
-      <h3 className="absolute top-36 text-center text-sm uppercase tracking-[3px] text-gray-500">
-        hover for projects completed
+      <h3 className=" absolute top-36 text-center text-sm uppercase tracking-[3px] text-gray-500">
+        hover for tech proficiency
       </h3>
-      <div className="grid grid-cols-4 gap-4">
-        <SiJavascript
-          title="JavaScript"
-          size={80}
-          color="default"
-          className="rounded-full "
-        />
-        <Skill />
-        <Skill />
-        <Skill />
-        <Skill />
-        <Skill />
-        <Skill />
-        <Skill />
-        <Skill />
-        <Skill />
-        <Skill />
-        <Skill />
+      <div className="mt-24 grid grid-cols-4 gap-4">
+        {skills?.slice(0, skills.length / 2).map((skill) => (
+          <Skill skill={skill} />
+        ))}
+
+        {skills?.slice(skills.length / 2, skills.length).map((skill) => (
+          <Skill skill={skill} directionLeft />
+        ))}
       </div>
     </motion.div>
   );
