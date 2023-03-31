@@ -38,12 +38,19 @@ const querySkills = groq`
   } | order(title desc)
 `;
 
+const queryProjects = groq`
+  *[_type=='project'] {
+    ...,
+  } | order(title desc)
+`;
+
 export default async function HomePage({}: Props) {
   const pageInfoArray = await client.fetch(queryPageInfo);
   const pageInfo = pageInfoArray[0];
   const socials = await client.fetch(querySocials);
   const experience = await client.fetch(queryExperience);
   const skills = await client.fetch(querySkills);
+  const projects = await client.fetch(queryProjects);
 
   return (
     <div className="z-0 h-screen snap-y snap-mandatory overflow-y-scroll bg-[rgb(36,36,36)] text-white scrollbar overflow-x-hidden scrollbar-track-gray-400/20 scrollbar-thumb-[#ff25e2]/20">
@@ -66,7 +73,7 @@ export default async function HomePage({}: Props) {
       </section>
 
       <section id="projects" className="snap-start">
-        <Projects />
+        <Projects projects={projects} />
       </section>
 
       <section id="contact" className="snap-start">

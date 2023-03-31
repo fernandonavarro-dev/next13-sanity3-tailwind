@@ -2,10 +2,11 @@
 import { motion } from 'framer-motion';
 import React from 'react';
 
-type Props = {};
+type Props = {
+  projects: Project[];
+};
 
-export default function Projects({}: Props) {
-  const projects = [1, 2, 3, 4];
+export default function Projects({ projects }: Props) {
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -17,7 +18,7 @@ export default function Projects({}: Props) {
         Projects
       </h3>
 
-      <div className="relative z-20 flex w-full snap-x snap-mandatory overflow-x-scroll overflow-y-hidden scrollbar-thin scrollbar-track-gray-400/20 scrollbar-thumb-[#ff25e2]/20">
+      <div className="relative mt-20 z-20 flex w-full snap-x snap-mandatory overflow-x-scroll overflow-y-hidden scrollbar-thin scrollbar-track-gray-400/20 scrollbar-thumb-[#ff25e2]/20">
         {projects.map((project, i) => (
           <div
             key={i}
@@ -31,21 +32,18 @@ export default function Projects({}: Props) {
               transition={{ duration: 1.2 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              src="https://media.discordapp.net/attachments/1068307172158619720/1084292392208846899/PortfolioHeading.jpg?width=974&height=502"
+              src={project.imageUrl}
               alt=""
             />
             <div className="max-w-6xl space-y-10 px-0 md:px-10">
               <h4 className="text-center text-4xl font-semibold">
                 Project {i + 1} of {projects.length}:{' '}
                 <span className="underline decoration-[#ff25e2]/50">
-                  Name...
+                  {project.title}
                 </span>
               </h4>
               <p className="text-center text-lg md:text-left">
-                Explanation of the project goes here. Explanation of the project
-                goes here. Explanation of the project goes here. Explanation of
-                the project goes here. Explanation of the project goes here.
-                Explanation of the project goes here
+                {project.summary}
               </p>
             </div>
           </div>
