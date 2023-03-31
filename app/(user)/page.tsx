@@ -9,14 +9,6 @@ import Contact from '../../components/Conatact';
 import Skills from '../../components/Skills';
 import Projects from '../../components/Projects';
 
-// type Props = {
-//   pageInfo: PageInfo;
-//   experience: Experience[];
-//   skills: Skill[];
-//   projects: Project[];
-//   socials: Social[];
-// };
-
 const queryPageInfo = groq`
   *[_type=='pageInfo'] {
     ...,
