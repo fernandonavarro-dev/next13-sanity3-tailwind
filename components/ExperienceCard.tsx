@@ -33,7 +33,7 @@ export default function ExperienceCard({ experience, skills }: Props) {
               <img
                 key={technology._ref}
                 className="h-10 w-10 bg-transparent rounded-full"
-                src={techRef.imageUrl}
+                src={techRef?.imageUrl}
                 alt={techRef?.title}
               />
             );

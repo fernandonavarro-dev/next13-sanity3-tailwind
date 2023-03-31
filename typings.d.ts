@@ -31,6 +31,7 @@ interface PageInfo extends Base {
 }
 
 interface Technology extends Base {
+  _ref: string;
   _type: 'skill';
   image: Image;
   imageUrl: string;

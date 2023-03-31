@@ -9,13 +9,13 @@ import Contact from '../../components/Conatact';
 import Skills from '../../components/Skills';
 import Projects from '../../components/Projects';
 
-type Props = {
-  pageInfo: PageInfo;
-  experience: Experience[];
-  skills: Skill[];
-  projects: Project[];
-  socials: Social[];
-};
+// type Props = {
+//   pageInfo: PageInfo;
+//   experience: Experience[];
+//   skills: Skill[];
+//   projects: Project[];
+//   socials: Social[];
+// };
 
 const queryPageInfo = groq`
   *[_type=='pageInfo'] {
@@ -44,7 +44,7 @@ const queryProjects = groq`
   } | order(title desc)
 `;
 
-export default async function HomePage({}: Props) {
+export default async function HomePage() {
   const pageInfoArray = await client.fetch(queryPageInfo);
   const pageInfo = pageInfoArray[0];
   const socials = await client.fetch(querySocials);
