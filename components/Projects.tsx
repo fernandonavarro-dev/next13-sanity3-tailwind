@@ -38,9 +38,11 @@ export default function Projects({ projects }: Props) {
             <div className="max-w-6xl space-y-8 md:space-y-10 px-0 md:px-10">
               <h4 className="text-center text-xl md:text-4xl font-semibold">
                 Project {i + 1} of {projects.length}:{' '}
-                <span className="underline decoration-[#ff25e2]/50">
-                  {project.title}
-                </span>
+                <a href={project.linkToBuild}>
+                  <span className="underline decoration-[#ff25e2]/50">
+                    {project.title}
+                  </span>
+                </a>
               </h4>
               <p className="text-center text-sm md:text-lg md:text-left">
                 {project.summary}
