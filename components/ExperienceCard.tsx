@@ -58,10 +58,9 @@ export default function ExperienceCard({ experience, skills }: Props) {
         </p>
 
         <ul className="ml-5 list-disc space-y-4 text-base md:text-lg">
-          <li>Summary</li>
-          <li>Summary</li>
-          <li>Summary</li>
-          <li>Summary</li>
+          {experience.points.map((point) => (
+            <li>{point}</li>
+          ))}
         </ul>
       </div>
     </article>

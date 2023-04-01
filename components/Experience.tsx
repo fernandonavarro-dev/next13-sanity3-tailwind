@@ -20,7 +20,7 @@ export default function Experience({ experiences, skills }: Props) {
       <h3 className="absolute top-24 text-2xl uppercase tracking-[20px] text-gray-500">
         Experience
       </h3>
-      <div className="mt-28 flex w-full snap-x snap-mandatory space-x-5 overflow-x-scroll p-10 scrollbar-thin scrollbar-track-gray-400/20 scrollbar-thumb-[#ff25e2]/20">
+      <div className="mt-28 sm:mt-32 md:mt-36 flex w-full snap-x snap-mandatory space-x-5 overflow-x-scroll p-10 scrollbar-thin scrollbar-track-gray-400/20 scrollbar-thumb-[#ff25e2]/20">
         {experiences.map((experience) => (
           <ExperienceCard
             key={experience._id}

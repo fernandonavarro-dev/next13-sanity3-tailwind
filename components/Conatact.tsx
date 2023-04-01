@@ -32,8 +32,8 @@ export default function Contact({}: Props) {
         Contact
       </h3>
 
-      <div className="mt-24 flex w-full md:w-auto flex-col space-y-6 px-4 md:px-0">
-        <h4 className="text-wr w-auto text-center text-xl md:text-2xl font-semibold">
+      <div className="mt-24 md:mt-12 flex w-fit md:w-auto flex-col space-y-6 px-4 md:px-0">
+        <h4 className="text-wr w-auto text-center text-xl md:text-2xl lg:text-4xl font-semibold">
           Always open to cool projects with good teams.{' '}
           <span className="underline decoration-[#ff25e2]/60">
             Please reach out.
