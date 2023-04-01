@@ -32,7 +32,7 @@ export default function Contact({}: Props) {
         Contact
       </h3>
 
-      <div className="mt-20 flex w-full md:w-auto flex-col space-y-6 px-4 md:px-0">
+      <div className="mt-24 flex w-full md:w-auto flex-col space-y-6 px-4 md:px-0">
         <h4 className="text-wr w-auto text-center text-xl md:text-2xl font-semibold">
           Always open to cool projects with good teams.{' '}
           <span className="underline decoration-[#ff25e2]/60">
@@ -95,7 +95,7 @@ export default function Contact({}: Props) {
           />
           <button
             type="submit"
-            className="rounded-md bg-[#ff25e2]/80 py-5 px-10 text-lg font-bold text-gray-900 hover:bg-[#ff25e2]/40"
+            className="rounded-md bg-[#ff25e2]/80 py-4 md:py-5 px-10 text-lg font-bold text-gray-900 hover:bg-[#ff25e2]/40"
           >
             Submit
           </button>
