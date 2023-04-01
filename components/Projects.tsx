@@ -22,7 +22,7 @@ export default function Projects({ projects }: Props) {
         {projects.map((project, i) => (
           <div
             key={i}
-            className="flex h-screen w-screen max-w-5xl flex-shrink-0 snap-center flex-col items-center justify-center space-y-5 p-20 md:p-44"
+            className="flex h-screen w-screen max-w-5xl flex-shrink-0 snap-center flex-col items-center justify-center space-y-5 p-10 sm:p-20 md:p-44"
           >
             <motion.img
               initial={{
@@ -35,14 +35,14 @@ export default function Projects({ projects }: Props) {
               src={project.imageUrl}
               alt=""
             />
-            <div className="max-w-6xl space-y-10 px-0 md:px-10">
-              <h4 className="text-center text-4xl font-semibold">
+            <div className="max-w-6xl space-y-8 md:space-y-10 px-0 md:px-10">
+              <h4 className="text-center text-xl md:text-4xl font-semibold">
                 Project {i + 1} of {projects.length}:{' '}
                 <span className="underline decoration-[#ff25e2]/50">
                   {project.title}
                 </span>
               </h4>
-              <p className="text-center text-lg md:text-left">
+              <p className="text-center text-sm md:text-lg md:text-left">
                 {project.summary}
               </p>
             </div>

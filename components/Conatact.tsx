@@ -32,50 +32,50 @@ export default function Contact({}: Props) {
         Contact
       </h3>
 
-      <div className="mt-20 flex w-fit flex-col space-y-6">
-        <h4 className="text-wr w-auto text-center text-2xl font-semibold">
+      <div className="mt-20 flex w-full md:w-auto flex-col space-y-6 px-4 md:px-0">
+        <h4 className="text-wr w-auto text-center text-xl md:text-2xl font-semibold">
           Always open to cool projects with good teams.{' '}
           <span className="underline decoration-[#ff25e2]/60">
             Please reach out.
           </span>
         </h4>
 
-        <div className="space-y-10">
+        <div className="space-y-10 leading-2 md:leading-0">
           <div className="flex items-center justify-center space-x-5">
-            <PhoneIcon className="h-7 w-7 animate-pulse text-[#ff25e2]" />
-            <p className="text-l">(415) 853-7949</p>
+            <PhoneIcon className="h-5 w-5 md:h-7 md:w-7 animate-pulse text-[#ff25e2]" />
+            <p className="text-l ">(415) 853-7949</p>
           </div>
         </div>
-        <div className="space-y-10">
+        <div className="space-y-10 leading-2 md:leading-0">
           <div className="flex items-center justify-center space-x-5">
-            <EnvelopeIcon className="h-7 w-7 animate-pulse text-[#ff25e2]" />
-            <p className="text-l">fn@fn-dev.com</p>
+            <EnvelopeIcon className="h-5 w-5 md:h-7 md:w-7 animate-pulse text-[#ff25e2]" />
+            <p className="text-l ">fn@fn-dev.com</p>
           </div>
         </div>
-        <div className="space-y-10">
+        <div className="space-y-10 leading-2 md:leading-0">
           <div className="flex items-center justify-center space-x-5">
-            <MapPinIcon className="h-7 w-7 animate-pulse text-[#ff25e2]" />
-            <p className="text-l">San Francisco Bay Area</p>
+            <MapPinIcon className="h-5 w-5 md:h-7 md:w-7 animate-pulse text-[#ff25e2]" />
+            <p className="text-l ">San Francisco Bay Area</p>
           </div>
         </div>
 
         <form
           onSubmit={handleSubmit(onSubmit)}
-          className="mx-auto flex w-fit flex-col space-y-2"
+          className="mx-auto flex w-full flex-col space-y-2 p-1"
         >
-          <div className="flex space-x-2">
+          <div className="flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-2">
             <input
               {...register('name')}
               required={true}
               placeholder="Name"
-              className="contactFields"
+              className="contactFields flex-grow md:w-auto"
               type="text"
             />
             <input
               {...register('email')}
               required={true}
               placeholder="Email"
-              className="contactFields"
+              className="contactFields flex-grow md:w-auto"
               type="email"
             />
           </div>
