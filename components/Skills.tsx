@@ -23,7 +23,7 @@ export default function Skills({ skills }: Props) {
       <h3 className=" absolute top-36 text-center text-sm uppercase tracking-[3px] text-gray-500">
         hover for tech proficiency
       </h3>
-      <div className="mt-24 grid grid-cols-3 sm:grid-cols-4 gap-2 sm:gap-3 md:gap-4">
+      <div className="mt-24 grid grid-cols-4 gap-2 sm:gap-3 md:gap-4">
         {skills?.map((skill, index) => (
           <Skill skill={skill} directionLeft={index % 2 === 1} />
         ))}

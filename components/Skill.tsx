@@ -19,9 +19,9 @@ export default function Skill({ skill, directionLeft }: Props) {
         whileInView={{ opacity: 1, x: 0 }}
         src={skill.imageUrl}
         title={skill.title}
-        className=" h-14 w-14 rounded-full bg-[#303030] border border-gray-500 object-cover filter transition duration-300 ease-in-out group-hover:grayscale sm:h-20 sm:w-20 md:h-24 md:w-24 xl:h-28 xl:w-28"
+        className=" h-12 w-12 rounded-full bg-[#303030] border border-gray-500 object-cover filter transition duration-300 ease-in-out group-hover:grayscale sm:h-20 sm:w-20 md:h-24 md:w-24 xl:h-28 xl:w-28"
       />
-      <div className="absolute z-0 h-14 w-14 sm:h-20 sm:w-20 rounded-full opacity-0 transition duration-300 ease-in-out  group-hover:bg-white group-hover:opacity-80 xs:h-14 xs:w-14 md:h-24 md:w-24 xl:h-28 xl:w-28">
+      <div className="absolute z-0 h-12 w-12 sm:h-20 sm:w-20 rounded-full opacity-0 transition duration-300 ease-in-out  group-hover:bg-white group-hover:opacity-80 xs:h-14 xs:w-14 md:h-24 md:w-24 xl:h-28 xl:w-28">
         <div className="flex h-full items-center justify-center">
           <p className="text-2xl font-bold text-black opacity-100 md:text-3xl">
             {skill.progress}%
