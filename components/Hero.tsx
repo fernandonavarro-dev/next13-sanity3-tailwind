@@ -29,10 +29,10 @@ export default function Hero({ pageInfo }: Props) {
         alt=""
       />
       <div className="z-20">
-        <h2 className="pb-2 text-sm uppercase tracking-[15px] text-gray-500">
+        <h2 className="pb-2 text-xs uppercase tracking-[15px] text-gray-500 md:text-sm">
           {pageInfo.roleOne}
         </h2>
-        <h2 className="pb-2 text-sm uppercase tracking-[15px] text-gray-500">
+        <h2 className="pb-2 text-xs uppercase tracking-[15px] text-gray-500 md:text-sm">
           {pageInfo.roleTwo}
         </h2>
         <h2>
