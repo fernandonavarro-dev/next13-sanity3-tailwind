@@ -72,8 +72,8 @@ export default async function HomePage() {
         <Contact />
       </section>
 
-      <a href="#hero">
-        <footer className="sticky bottom-5 w-full cursor-pointer">
+      <footer className="sticky bottom-5 w-full cursor-pointer">
+        <a href="#hero">
           <div className="flex items-center justify-center">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -90,8 +90,29 @@ export default async function HomePage() {
               />
             </svg>
           </div>
-        </footer>
-      </a>
+        </a>
+        <div className="flex items-end justify-end mr-10 mb-5">
+          <a
+            href="/Fernando-Navarro-Resume.pdf"
+            download
+            className="flex items-center text-sm uppercase text-gray-400 md:inline-flex p-2 rounded-xl hover:bg-[#ff25e2]/20"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 20 20"
+              fill="currentColor"
+              className="h-6 w-6 mr-1"
+            >
+              <path
+                fillRule="evenodd"
+                d="M10 12a1 1 0 01-.707-.293l-3-3a1 1 0 011.414-1.414L10 9.586l2.293-2.293a1 1 0 011.414 1.414l-3 3A1 1 0 0110 12zm-8 2a1 1 0 011-1h14a1 1 0 110 2H2a1 1 0 01-1-1z"
+                clipRule="evenodd"
+              />
+            </svg>
+            My Resume
+          </a>
+        </div>
+      </footer>
     </div>
   );
 }
