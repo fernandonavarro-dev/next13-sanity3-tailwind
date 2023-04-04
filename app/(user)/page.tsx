@@ -72,7 +72,7 @@ export default async function HomePage() {
         <Contact />
       </section>
 
-      <footer className="sticky bottom-5 w-full cursor-pointer">
+      <footer className="sticky bottom-3 sm:bottom-5 w-full cursor-pointer">
         <a href="#hero">
           <div className="flex items-center justify-center">
             <svg

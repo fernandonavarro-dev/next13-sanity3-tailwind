@@ -32,30 +32,30 @@ export default function Contact({}: Props) {
         Contact
       </h3>
 
-      <div className="mt-20 md:mt-8 flex w-fit md:w-auto flex-col space-y-6 px-4 md:px-0">
-        <h4 className="text-wr w-auto text-center max-w-md sm:max-w-l md:max-w-2xl text-2xl md:text-3xl lg:text-4xl font-semibold">
+      <div className="mt-20 md:mt-14 flex w-fit md:w-auto flex-col space-y-3 sm:space-y-6 px-4 md:px-0">
+        <h4 className="text-wr w-auto text-center max-w-md sm:max-w-l md:max-w-2xl text-xl sm:text-2xl md:text-3xl lg:text-4xl font-semibold">
           Always open to cool projects with good teams.{' '}
           <span className="underline decoration-[#ff25e2]/60">
             Please reach out.
           </span>
         </h4>
 
-        <div className="space-y-10 leading-2 md:leading-0">
+        <div className="space-y-4 md:space-y-10 leading-2 md:leading-0">
           <div className="flex items-center justify-center space-x-5">
-            <PhoneIcon className="h-7 w-7 animate-pulse text-[#ff25e2]" />
-            <p className="text-xl ">(415) 853-7949</p>
+            <PhoneIcon className="h-5 w-5 sm:h-7 sm:w-7 animate-pulse text-[#ff25e2]" />
+            <p className="text-base sm:text-xl ">(415) 853-7949</p>
           </div>
         </div>
         <div className="space-y-4 md:space-y-10 leading-2 md:leading-0">
           <div className="flex items-center justify-center space-x-5">
-            <EnvelopeIcon className="h-7 w-7 animate-pulse text-[#ff25e2]" />
-            <p className="text-xl ">fn@fn-dev.com</p>
+            <EnvelopeIcon className="h-5 w-5 sm:h-7 sm:w-7 animate-pulse text-[#ff25e2]" />
+            <p className="text-base sm:text-xl ">fn@fn-dev.com</p>
           </div>
         </div>
         <div className="space-y-4 md:space-y-10 leading-2 md:leading-0">
           <div className="flex items-center justify-center space-x-5">
-            <MapPinIcon className="h-7 w-7 animate-pulse text-[#ff25e2]" />
-            <p className="text-xl ">San Francisco Bay Area</p>
+            <MapPinIcon className="h-5 w-5 sm:h-7 sm:w-7 animate-pulse text-[#ff25e2]" />
+            <p className="text-base sm:text-xl ">San Francisco Bay Area</p>
           </div>
         </div>
 
