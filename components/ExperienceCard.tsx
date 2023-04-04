@@ -58,8 +58,8 @@ export default function ExperienceCard({ experience, skills }: Props) {
         </p>
 
         <ul className="ml-3 md:ml-5 list-disc space-y-2 md:space-y-4 text-sm sm:text-base md:text-lg">
-          {experience.points.map((point) => (
-            <li>{point}</li>
+          {experience.points.map((point, index) => (
+            <li key={index}>{point}</li>
           ))}
         </ul>
       </div>
