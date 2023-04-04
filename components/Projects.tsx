@@ -18,7 +18,7 @@ export default function Projects({ projects }: Props) {
         Projects
       </h3>
 
-      <div className="relative mt-20 z-20 flex w-full snap-x snap-mandatory overflow-x-scroll overflow-y-hidden scrollbar-thin scrollbar-track-gray-400/20 scrollbar-thumb-[#ff25e2]/20">
+      <div className="relative mt-6 md:mt-10 z-20 flex w-full snap-x snap-mandatory overflow-x-scroll overflow-y-hidden scrollbar-thin scrollbar-track-gray-400/20 scrollbar-thumb-[#ff25e2]/20">
         {projects.map((project, i) => (
           <div
             key={i}
@@ -35,8 +35,8 @@ export default function Projects({ projects }: Props) {
               src={project.imageUrl}
               alt=""
             />
-            <div className="max-w-6xl space-y-8 md:space-y-10 px-0 md:px-10">
-              <h4 className="text-center text-xl md:text-4xl font-semibold">
+            <div className="max-w-6xl space-y-4 sm:space-y-8 md:space-y-10 px-0 md:px-10">
+              <h4 className="text-center text-base sm:text-xl md:text-4xl font-semibold">
                 Project {i + 1} of {projects.length}:{' '}
                 <a href={project.linkToBuild}>
                   <span className="underline decoration-[#ff25e2]/50">
@@ -44,7 +44,7 @@ export default function Projects({ projects }: Props) {
                   </span>
                 </a>
               </h4>
-              <p className="text-center text-sm md:text-lg md:text-left">
+              <p className="text-center text-xs sm:text-sm md:text-lg md:text-left">
                 {project.summary}
               </p>
             </div>

@@ -17,15 +17,15 @@ export default function ExperienceCard({ experience, skills }: Props) {
         transition={{ duration: 1.2 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        className="h-24 w-24 md:h-32 md:w-32 rounded-full object-cover object-center xl:h-[200px] xl:w-[200px]"
+        className="h-20 w-20 sm:h-24 sm:w-24 md:h-32 md:w-32 rounded-full object-cover object-center xl:h-[200px] xl:w-[200px]"
         src={experience.companyImageUrl}
         alt=""
       />
       <div className="px-0 md:px-10">
-        <h4 className="text-xl md:text-4xl font-light">
+        <h4 className="text-l sm:text-xl md:text-4xl font-light">
           {experience.jobTitle}
         </h4>
-        <p className="mt-1 text-xl md:text-2xl font-bold">
+        <p className="mt-1 text:l sm:text-xl md:text-2xl font-bold">
           {experience.company}
         </p>
         <div className="my-2 flex space-x-2">
@@ -43,7 +43,7 @@ export default function ExperienceCard({ experience, skills }: Props) {
             );
           })}
         </div>
-        <p className="py-3 md:py-5 text-gray-300">
+        <p className="py-1 sm:py-3 md:py-5 text-gray-300">
           {new Date(experience.dateStarted).toLocaleString('en-US', {
             month: 'short',
             year: 'numeric',
@@ -57,7 +57,7 @@ export default function ExperienceCard({ experience, skills }: Props) {
             : 'Present'}
         </p>
 
-        <ul className="ml-5 list-disc space-y-4 text-base md:text-lg">
+        <ul className="ml-3 md:ml-5 list-disc space-y-2 md:space-y-4 text-sm sm:text-base md:text-lg">
           {experience.points.map((point) => (
             <li>{point}</li>
           ))}

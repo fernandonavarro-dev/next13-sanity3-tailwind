@@ -32,7 +32,7 @@ export default function Contact({}: Props) {
         Contact
       </h3>
 
-      <div className="mt-24 md:mt-12 flex w-fit md:w-auto flex-col space-y-6 px-4 md:px-0">
+      <div className="mt-20 md:mt-8 flex w-fit md:w-auto flex-col space-y-3 md:space-y-6 px-4 md:px-0">
         <h4 className="text-wr w-auto text-center text-xl md:text-2xl lg:text-4xl font-semibold">
           Always open to cool projects with good teams.{' '}
           <span className="underline decoration-[#ff25e2]/60">
@@ -40,19 +40,19 @@ export default function Contact({}: Props) {
           </span>
         </h4>
 
-        <div className="space-y-10 leading-2 md:leading-0">
+        <div className="space-y-4 md:space-y-10 leading-2 md:leading-0">
           <div className="flex items-center justify-center space-x-5">
             <PhoneIcon className="h-5 w-5 md:h-7 md:w-7 animate-pulse text-[#ff25e2]" />
             <p className="text-l ">(415) 853-7949</p>
           </div>
         </div>
-        <div className="space-y-10 leading-2 md:leading-0">
+        <div className="space-y-4 md:space-y-10 leading-2 md:leading-0">
           <div className="flex items-center justify-center space-x-5">
             <EnvelopeIcon className="h-5 w-5 md:h-7 md:w-7 animate-pulse text-[#ff25e2]" />
             <p className="text-l ">fn@fn-dev.com</p>
           </div>
         </div>
-        <div className="space-y-10 leading-2 md:leading-0">
+        <div className="space-y-4 md:space-y-10 leading-2 md:leading-0">
           <div className="flex items-center justify-center space-x-5">
             <MapPinIcon className="h-5 w-5 md:h-7 md:w-7 animate-pulse text-[#ff25e2]" />
             <p className="text-l ">San Francisco Bay Area</p>

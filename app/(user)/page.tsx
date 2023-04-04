@@ -91,17 +91,17 @@ export default async function HomePage() {
             </svg>
           </div>
         </a>
-        <div className="flex items-end justify-end mr-10 mb-5">
+        <div className="flex items-end justify-end mr-5 mb-2 md:mr-10 md:mb-5">
           <a
             href="/Fernando-Navarro-Resume.pdf"
             download
-            className="flex items-center text-sm uppercase text-gray-400 md:inline-flex p-2 rounded-xl hover:bg-[#ff25e2]/20"
+            className="flex items-center text-xs md:text-sm uppercase text-gray-400 md:inline-flex p-2 rounded-xl hover:bg-[#ff25e2]/20"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 20 20"
               fill="currentColor"
-              className="h-6 w-6 mr-1"
+              className="h-4 w-4 md:h-6 md:w-6 mr-1"
             >
               <path
                 fillRule="evenodd"
