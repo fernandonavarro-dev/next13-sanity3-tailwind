@@ -91,7 +91,7 @@ export default async function HomePage() {
             </svg>
           </div>
         </a>
-        <div className="flex items-end justify-end mr-5 mb-2 md:mr-10 md:mb-5">
+        <div className="flex items-end justify-end mr-5 mb-2 md:mr-10 md:mb-5 xl:mr-24">
           <a
             href="/Fernando-Navarro-Resume.pdf"
             download
