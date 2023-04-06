@@ -29,19 +29,20 @@ export default function ExperienceCard({ experience, skills }: Props) {
           {experience.company}
         </p>
         <div className="my-2 flex space-x-2">
-          {experience.technologies.map((technology) => {
-            const techRef = skills.find(
-              (skill) => skill._id === technology._ref
-            );
-            return (
-              <img
-                key={technology._ref}
-                className="h-6 w-6 md:h-10 md:w-10 bg-transparent rounded-full"
-                src={techRef?.imageUrl}
-                alt={techRef?.title}
-              />
-            );
-          })}
+          {experience.technologies &&
+            experience.technologies.map((technology) => {
+              const techRef = skills.find(
+                (skill) => skill._id === technology._ref
+              );
+              return (
+                <img
+                  key={technology._ref}
+                  className="h-6 w-6 md:h-10 md:w-10 bg-transparent rounded-full"
+                  src={techRef?.imageUrl}
+                  alt={techRef?.title}
+                />
+              );
+            })}
         </div>
         <p className="py-1 sm:py-3 md:py-5 text-gray-300">
           {new Date(experience.dateStarted).toLocaleString('en-US', {

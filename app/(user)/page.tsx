@@ -22,7 +22,7 @@ const querySocials = groq`
 const queryExperience = groq`
   *[_type=='experience'] {
     ...,
-  } | order(dateStarted desc)
+  } | order(dateEnded desc)
 `;
 const querySkills = groq`
   *[_type=='skill'] {
