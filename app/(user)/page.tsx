@@ -33,7 +33,7 @@ const querySkills = groq`
 const queryProjects = groq`
   *[_type=='project'] {
     ...,
-  } | order(_createdAt desc)
+  } | order(_updatedAt desc)
 `;
 
 export default async function HomePage() {
