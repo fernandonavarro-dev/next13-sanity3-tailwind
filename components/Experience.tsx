@@ -15,12 +15,12 @@ export default function Experience({ experiences, skills }: Props) {
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
       transition={{ duration: 1.5 }}
-      className="relative mx-auto flex h-screen max-w-full flex-col items-center justify-evenly overflow-hidden px-10 text-left md:flex-row"
+      className="relative mx-auto flex h-screen max-w-full flex-col items-center justify-evenly overflow-hidden px-10 text-left lg:flex-row"
     >
       <h3 className="absolute top-24 text-2xl uppercase tracking-[20px] text-gray-500">
         Experience
       </h3>
-      <div className="mt-28 sm:mt-32 md:mt-36 md:mb-16 flex w-full snap-x snap-mandatory space-x-5 overflow-x-scroll md:p-24 scrollbar-thin scrollbar-track-gray-400/20 scrollbar-thumb-[#ff25e2]/20">
+      <div className="mt-28 sm:mt-32 lg:mt-36 lg:mb-16 flex w-full snap-x snap-mandatory space-x-5 overflow-x-scroll lg:p-24 scrollbar-thin scrollbar-track-gray-400/20 scrollbar-thumb-[#ff25e2]/20">
         {experiences.map((experience) => (
           <ExperienceCard
             key={experience._id}

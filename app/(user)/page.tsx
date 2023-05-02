@@ -93,7 +93,7 @@ export default async function HomePage() {
         </a>
         <div className="flex items-end justify-end mr-5 mb-2 md:mr-10 md:mb-5 xl:mr-24">
           <a
-            href="/Fernando-Navarro-Resume(4.30).pdf"
+            href="/Fernando-Navarro-Resume(5.1).pdf"
             download
             className="flex items-center text-xs md:text-sm uppercase text-gray-400 md:inline-flex p-2 rounded-xl hover:bg-[#ff25e2]/20"
           >
