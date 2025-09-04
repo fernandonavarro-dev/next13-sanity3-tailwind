@@ -14,7 +14,7 @@ export default function Hero({ pageInfo }: Props) {
     words: [
       "Hi, I'm Fernando Navarro",
       'Coding cool stuff with React.js',
-      'AI prompt engineer in the making, superpowers stuff...',
+      'Using GIS for dashboards and such daily',
     ],
     loop: true,
     delaySpeed: 1800,

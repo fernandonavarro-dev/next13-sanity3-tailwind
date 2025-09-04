@@ -1,9 +1,8 @@
 'use client';
 import { motion } from 'framer-motion';
 import React from 'react';
-// import skill from '../schemas/skill';
-
 import Skill from './Skill';
+
 type Props = {
   skills: Skill[];
 };
