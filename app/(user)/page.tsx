@@ -72,9 +72,10 @@ export default async function HomePage() {
         <Contact />
       </section>
 
-      <footer className="sticky bottom-3 sm:bottom-5 w-full cursor-pointer">
-        <a href="#hero">
-          <div className="flex items-center justify-center">
+      <footer className="sticky bottom-2 sm:bottom-5 w-full">
+        <div className="grid grid-cols-3 items-end px-5 md:px-10 xl:px-24 py-1 md:py-1">
+          <span />
+          <a href="#hero" className="justify-self-center">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -89,13 +90,11 @@ export default async function HomePage() {
                 d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25"
               />
             </svg>
-          </div>
-        </a>
-        <div className="flex items-end justify-end mr-5 mb-2 md:mr-10 md:mb-5 xl:mr-24">
+          </a>
           <a
             href="/Fernando-Navarro-Resume(5.3).pdf"
             download
-            className="flex items-center text-xs md:text-sm uppercase text-gray-400 md:inline-flex p-2 rounded-xl hover:bg-[#ff25e2]/20"
+            className="justify-self-end flex items-center text-xs md:text-sm uppercase text-gray-400 p-2 rounded-xl hover:bg-[#ff25e2]/20"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"

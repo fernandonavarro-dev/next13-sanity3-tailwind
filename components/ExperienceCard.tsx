@@ -8,7 +8,7 @@ type Props = {
 
 export default function ExperienceCard({ experience, skills }: Props) {
   return (
-    <article className="flex w-[500px] flex-shrink-0 cursor-pointer snap-center flex-col items-center space-y-7 overflow-hidden rounded-lg bg-[#303030] p-6 lg:p-10 opacity-40 transition-opacity duration-200 hover:opacity-100 lg:w-[600px] xl:w-[800px]">
+    <article className="flex w-[500px] h-[73vh] flex-shrink-0 cursor-pointer snap-center flex-col items-center space-y-8 overflow-x-hidden overflow-y-scroll scrollbar-none rounded-lg bg-[#303030] p-6 lg:p-10 opacity-40 transition-opacity duration-200 hover:opacity-100 lg:w-[600px] xl:w-[800px]">
       <motion.img
         initial={{
           y: -100,
