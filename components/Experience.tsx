@@ -15,7 +15,7 @@ export default function Experience({ experiences, skills }: Props) {
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
       transition={{ duration: 1.5 }}
-      className="relative mx-auto flex h-screen max-w-full flex-col items-center justify-evenly overflow-hidden px-10 text-left lg:flex-row"
+      className="relative mx-auto flex h-[100svh] md:h-screen max-w-full flex-col items-center justify-evenly overflow-hidden px-10 text-left lg:flex-row"
     >
       <h3 className="absolute top-24 text-2xl uppercase tracking-[20px] text-gray-500">
         Experience
