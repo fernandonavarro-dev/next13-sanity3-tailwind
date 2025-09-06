@@ -36,6 +36,8 @@ export default function Header({ socials }: Props) {
               fgColor="gray"
               bgColor="transparent"
               className="rounded-full hover:bg-[#ff25e2]/20"
+              target="_blank"
+              rel="noopener noreferrer"
             />
           ))}
         </motion.div>
@@ -63,19 +65,16 @@ export default function Header({ socials }: Props) {
             bgColor="transparent"
             className="cursor-pointer rounded-full hover:bg-[#ff25e2]/20 hover:text-[#ff25e2]"
             onClick={(e) => {
-              e.preventDefault;
+              e.preventDefault();
               window.location.href = 'mailto:fn@fn-dev.com';
             }}
           />
-          <p
+          <a
+            href="mailto:fn@fn-dev.com"
             className="ml-1 hidden text-sm uppercase text-gray-400 md:inline-flex p-2 rounded-xl hover:bg-[#ff25e2]/20"
-            onClick={(e) => {
-              e.preventDefault;
-              window.location.href = 'mailto:fn@fn-dev.com';
-            }}
           >
             Get in touch
-          </p>
+          </a>
         </motion.div>
         {/* </Link> */}
       </div>
