@@ -1,27 +1,39 @@
-# Next.js + Tailwind CSS Example
+# Fernando Navarro portfolio
 
-This example shows how to use [Tailwind CSS](https://tailwindcss.com/) [(v3.2)](https://tailwindcss.com/blog/tailwindcss-v3-2) with Next.js. It follows the steps outlined in the official [Tailwind docs](https://tailwindcss.com/docs/guides/nextjs).
+Next.js portfolio with an embedded Sanity Studio at `/studio`. The `portfolio` branch is the existing site; `dev-clawdbot` is the agent development branch. Check the Vercel project's **Production Branch** setting before merging or pushing production changes.
 
-## Deploy your own
+## Local setup
 
-Deploy the example using [Vercel](https://vercel.com?utm_source=github&utm_medium=readme&utm_campaign=next-example) or preview live with [StackBlitz](https://stackblitz.com/github/vercel/next.js/tree/canary/examples/with-tailwindcss)
+Use Node 18 or 20 and `npm ci`. Create `.env.local` (never commit it):
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https://github.com/vercel/next.js/tree/canary/examples/with-tailwindcss&project-name=with-tailwindcss&repository-name=with-tailwindcss)
-
-## How to use
-
-Execute [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app) with [npm](https://docs.npmjs.com/cli/init), [Yarn](https://yarnpkg.com/lang/en/docs/cli/create/), or [pnpm](https://pnpm.io) to bootstrap the example:
-
-```bash
-npx create-next-app --example with-tailwindcss with-tailwindcss-app
+```text
+NEXT_PUBLIC_SANITY_PROJECT_ID=your-project-id
+NEXT_PUBLIC_SANITY_DATASET=production
+NEXT_PUBLIC_SANITY_API_VERSION=2023-01-01
 ```
 
-```bash
-yarn create next-app --example with-tailwindcss with-tailwindcss-app
-```
+Run `npm run dev`, then open `/studio` to edit content. The Sanity project and dataset must already exist and your Sanity account must have access. A GitHub PAT does **not** grant Sanity access.
 
-```bash
-pnpm create next-app --example with-tailwindcss with-tailwindcss-app
-```
+## What to edit in Studio
 
-Deploy it to the cloud with [Vercel](https://vercel.com/new?utm_source=github&utm_medium=readme&utm_campaign=next-example) ([Documentation](https://nextjs.org/docs/deployment)).
+- **Profile and homepage:** name, role labels, rotating hero lines, About text, public email/phone/location, contact introduction, résumé PDF, and search description. Studio opens the existing published profile as a single designated document; do not create a second one. The site still has a newest-profile fallback for compatibility with other datasets.
+- **Projects:** title, summary, Sanity image and alt text, live/repository URLs, category, featured flag, visibility, and display order. Lower order numbers appear first; featured items without an order follow, then other items in newest-created order. Editing a project no longer moves it to the top.
+- **Experience, skills, and social links:** use `displayOrder` to choose position and `hidden` to remove an item from the site without deleting it.
+
+New Sanity image uploads take precedence over legacy image URL fields. Existing URL fields remain for backward compatibility; do not delete them until all images have been migrated. The same rule applies to the résumé: until a Sanity PDF is uploaded, the existing static PDF is used. Empty new profile fields retain the current site copy so the first deployment is non-breaking.
+
+## Publishing and deployment
+
+1. Make content edits in Sanity Studio, then **Publish**. Studio drafts are not shown publicly.
+2. The homepage uses Next.js incremental static regeneration with a 60-second interval and queries Sanity without its CDN, so published content should appear after the next request following that interval. A code deploy is not required for ordinary content edits.
+3. Code changes go through a GitHub branch/PR and Vercel preview deployment; merging into the Vercel Production Branch deploys the production site. Confirm the branch setting in Vercel before merging.
+
+Draft preview is **not** configured yet. The old `/api/preview` route set a preview cookie but did not make App Router pages read drafts, so it was removed. Do not share unpublished content through a public preview URL. A secure draft preview needs Sanity authentication or a scoped read token and should be added as a separate, tested integration.
+
+## Working with an assistant
+
+- For code/layout changes: ask for a branch and review its Vercel preview before merging.
+- For copy/content changes: provide Sanity Studio access or a scoped Sanity write token via a secret store, not in the repository. The assistant can prepare draft edits; publishing remains a separate decision.
+- Keep a short list of content changes and review URLs for each update.
+
+The contact form only opens a prefilled email draft. It is labeled accordingly and is not a server-side submission. A true form requires a submission service or API plus spam protection.

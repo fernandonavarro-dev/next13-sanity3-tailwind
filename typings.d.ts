@@ -9,6 +9,7 @@ type Base = {
 interface Image {
   _type: 'image';
   imageUrl: string;
+  alt?: string;
   asset: {
     _ref: string;
     _type: 'reference';
@@ -24,10 +25,14 @@ interface PageInfo extends Base {
   roleTwo: string;
   heroImage: Image;
   heroImageUrl: string;
+  heroLines?: string[];
   name: string;
   phoneNumber: string;
   profilePic: Image;
   profilePicUrl: string;
+  contactIntro?: string;
+  resumeUrl?: string;
+  seoDescription?: string;
 }
 
 interface Technology extends Base {
@@ -45,6 +50,8 @@ interface Skill extends Base {
   imageUrl: string;
   progress: number;
   title: string;
+  displayOrder?: number;
+  hidden?: boolean;
 }
 
 interface Experience extends Base {
@@ -58,6 +65,8 @@ interface Experience extends Base {
   jobTitle: string;
   points: string[];
   technologies: Technology[];
+  displayOrder?: number;
+  hidden?: boolean;
 }
 
 interface Project extends Base {
@@ -68,10 +77,17 @@ interface Project extends Base {
   linkToBuild: string;
   summary: string;
   technologies: Technology[];
+  repositoryUrl?: string;
+  category?: string;
+  featured?: boolean;
+  displayOrder?: number;
+  hidden?: boolean;
 }
 
 interface Social extends Base {
   _type: 'social';
   title: string;
   url: string;
+  displayOrder?: number;
+  hidden?: boolean;
 }
