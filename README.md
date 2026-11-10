@@ -16,7 +16,7 @@ Run `npm run dev`, then open `/studio` to edit content. The Sanity project and d
 
 ## What to edit in Studio
 
-- **Profile and homepage:** name, role labels, rotating hero lines, About text, public email/phone/location, contact introduction, résumé PDF, and search description. Edit the existing published profile document; do not create a second one. The site currently selects the newest profile for compatibility with existing content. A future migration can consolidate this to a fixed-ID singleton once the current document ID and Sanity write access are available.
+- **Profile and homepage:** name, role labels, rotating hero lines, About text, public email/phone/location, contact introduction, résumé PDF, and search description. Studio opens the existing published profile as a single designated document; do not create a second one. The site still has a newest-profile fallback for compatibility with other datasets.
 - **Projects:** title, summary, Sanity image and alt text, live/repository URLs, category, featured flag, visibility, and display order. Lower order numbers appear first; featured items without an order follow, then other items in newest-created order. Editing a project no longer moves it to the top.
 - **Experience, skills, and social links:** use `displayOrder` to choose position and `hidden` to remove an item from the site without deleting it.
 
