@@ -21,7 +21,7 @@ export default function Projects({ projects }: Props) {
       <div className="relative mt-6 md:mt-10 z-20 flex w-full snap-x snap-mandatory overflow-x-scroll overflow-y-hidden scrollbar-none scrollbar-track-gray-400/20 scrollbar-thumb-[#ff25e2]/20">
         {projects.map((project, i) => (
           <div
-            key={i}
+            key={project._id}
             className="flex h-screen w-screen max-w-5xl flex-shrink-0 snap-center flex-col items-center justify-center space-y-5 p-10 sm:p-20 md:p-44"
           >
             <motion.img
@@ -33,20 +33,26 @@ export default function Projects({ projects }: Props) {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               src={project.imageUrl}
-              alt=""
+              alt={project.image?.alt || project.title}
             />
             <div className="max-w-6xl space-y-4 sm:space-y-8 md:space-y-10 px-0 md:px-10">
+              {project.category && (
+                <p className="text-center text-xs uppercase tracking-[3px] text-gray-400">{project.category}</p>
+              )}
               <h4 className="text-center text-base sm:text-xl md:text-4xl font-semibold">
                 Project {i + 1} of {projects.length}:{' '}
-                <a href={project.linkToBuild}>
-                  <span className="underline decoration-[#ff25e2]/50">
-                    {project.title}
-                  </span>
-                </a>
+                {project.linkToBuild ? (
+                  <a href={project.linkToBuild} className="underline decoration-[#ff25e2]/50">{project.title}</a>
+                ) : project.title}
               </h4>
               <p className="text-center text-xs sm:text-sm md:text-lg md:text-left">
                 {project.summary}
               </p>
+              {project.repositoryUrl && (
+                <p className="text-center text-xs sm:text-sm md:text-lg md:text-left">
+                  <a href={project.repositoryUrl} className="underline decoration-[#ff25e2]/50">View repository</a>
+                </p>
+              )}
             </div>
           </div>
         ))}

@@ -10,9 +10,11 @@ type Props = {
 };
 
 export default function Hero({ pageInfo }: Props) {
-  const [text, count] = useTypewriter({
-    words: [
-      "Hi, I'm Fernando Navarro",
+  const [text] = useTypewriter({
+    words: pageInfo.heroLines?.filter(Boolean).length
+      ? pageInfo.heroLines.filter(Boolean)
+      : [
+      `Hi, I'm ${pageInfo.name || 'Fernando Navarro'}`,
       'Coding cool stuff with React.js',
       'Using ArcGIS daily for dashboards and webapps',
       'Enhancing my dev powers with AI tools',
@@ -27,7 +29,7 @@ export default function Hero({ pageInfo }: Props) {
       <img
         className="relative mx-auto h-32 w-32 rounded-full object-cover"
         src={pageInfo.heroImageUrl}
-        alt=""
+        alt={pageInfo.heroImage?.alt || `${pageInfo.name} portrait`}
       />
       <div className="z-20">
         <h2 className="pb-2 text-xs uppercase tracking-[10px] md:tracking-[15px] text-gray-500 md:text-sm">
