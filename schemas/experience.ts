@@ -7,9 +7,16 @@ export default defineType({
   fields: [
     defineField({
       name: 'jobTitle',
-      title: 'JobTitle',
+      title: 'Job title',
       type: 'string',
+      validation: (Rule) => Rule.required(),
     }),
+    defineField({
+      name: 'displayOrder', title: 'Display order',
+      description: 'Lower numbers appear first. Empty items follow ordered items.',
+      type: 'number', validation: (Rule) => Rule.integer().min(0),
+    }),
+    defineField({ name: 'hidden', title: 'Hide from portfolio', type: 'boolean', initialValue: false }),
     defineField({
       name: 'companyImage',
       title: 'CompanyImage',
@@ -17,30 +24,31 @@ export default defineType({
       options: {
         hotspot: true,
       },
+      fields: [defineField({ name: 'alt', title: 'Alt text', type: 'string' })],
     }),
     defineField({
       name: 'companyImageUrl',
-      title: 'CompanyImageUrl',
+      title: 'Legacy company image URL',
+      description: 'Only used until a Sanity image is uploaded.',
       type: 'string',
     }),
     defineField({
       name: 'company',
-      title: 'Company',
-      type: 'text',
+      title: 'Company', type: 'string',
     }),
     defineField({
       name: 'dateStarted',
-      title: 'DateStarted',
+      title: 'Start date',
       type: 'date',
     }),
     defineField({
       name: 'dateEnded',
-      title: 'DateEnded',
+      title: 'End date',
       type: 'date',
     }),
     defineField({
       name: 'presentlyEmployed',
-      title: 'PresentlyEmployed',
+      title: 'Currently employed here',
       type: 'boolean',
     }),
     defineField({
@@ -56,4 +64,5 @@ export default defineType({
       of: [{ type: 'string' }],
     }),
   ],
+  preview: { select: { title: 'jobTitle', subtitle: 'company', media: 'companyImage' } },
 });

@@ -1,8 +1,9 @@
 'use client';
-import { EnvelopeIcon, MapPinIcon, PhoneIcon } from '@heroicons/react/24/solid';
+import { EnvelopeIcon, MapPinIcon } from '@heroicons/react/24/solid';
 import { motion } from 'framer-motion';
 import React from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
+import { getLocation } from '../lib/profileCopy';
 
 type Inputs = {
   name: string;
@@ -11,14 +12,17 @@ type Inputs = {
   message: string;
 };
 
-type Props = {};
+type Props = { pageInfo: PageInfo };
 
-export default function Contact({}: Props) {
+export default function Contact({ pageInfo }: Props) {
+  const email = pageInfo.email || 'fn@fn-dev.com';
+  const location = getLocation(pageInfo.address);
   const { register, handleSubmit } = useForm<Inputs>();
   const onSubmit: SubmitHandler<Inputs> = (FormData, event) => {
     event?.preventDefault();
-    window.location.href = `mailto:fn@fn-dev.com?subject=${FormData.subject}&body=Hi, my name is ${FormData.name}. ${FormData.message} (${FormData.email})`;
-    event?.target.reset();
+    const subject = encodeURIComponent(FormData.subject);
+    const body = encodeURIComponent(`Hi, my name is ${FormData.name}. ${FormData.message} (${FormData.email})`);
+    window.location.href = `mailto:${email}?subject=${subject}&body=${body}`;
   };
 
   return (
@@ -34,28 +38,19 @@ export default function Contact({}: Props) {
 
       <div className="mt-20 md:mt-14 flex w-fit md:w-auto flex-col space-y-3 sm:space-y-6 px-4 md:px-0">
         <h4 className="text-wr w-auto text-center max-w-md sm:max-w-l md:max-w-2xl text-xl sm:text-2xl md:text-3xl lg:text-4xl font-semibold">
-          Always open to cool projects with good teams.{' '}
-          <span className="underline decoration-[#ff25e2]/60">
-            Please reach out.
-          </span>
+          {pageInfo.contactIntro || 'Always open to cool projects with good teams. Please reach out.'}
         </h4>
 
         <div className="space-y-4 md:space-y-10 leading-2 md:leading-0">
           <div className="flex items-center justify-center space-x-5">
-            <PhoneIcon className="h-5 w-5 sm:h-7 sm:w-7 animate-pulse text-[#ff25e2]" />
-            <p className="text-base sm:text-xl ">(415) 853-7949</p>
-          </div>
-        </div>
-        <div className="space-y-4 md:space-y-10 leading-2 md:leading-0">
-          <div className="flex items-center justify-center space-x-5">
             <EnvelopeIcon className="h-5 w-5 sm:h-7 sm:w-7 animate-pulse text-[#ff25e2]" />
-            <p className="text-base sm:text-xl ">fn@fn-dev.com</p>
+            <a className="text-base sm:text-xl underline" href={`mailto:${email}`}>{email}</a>
           </div>
         </div>
         <div className="space-y-4 md:space-y-10 leading-2 md:leading-0">
           <div className="flex items-center justify-center space-x-5">
             <MapPinIcon className="h-5 w-5 sm:h-7 sm:w-7 animate-pulse text-[#ff25e2]" />
-            <p className="text-base sm:text-xl ">San Francisco Bay Area</p>
+            <p className="text-base sm:text-xl ">{location}</p>
           </div>
         </div>
 
@@ -97,7 +92,7 @@ export default function Contact({}: Props) {
             type="submit"
             className="rounded-md bg-[#ff25e2]/80 py-4 md:py-5 px-10 text-lg font-bold text-gray-900 hover:bg-[#ff25e2]/40"
           >
-            Submit
+            Open email draft
           </button>
         </form>
       </div>

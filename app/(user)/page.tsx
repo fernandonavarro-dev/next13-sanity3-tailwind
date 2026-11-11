@@ -8,52 +8,97 @@ import Experience from '../../components/Experience';
 import Contact from '../../components/Conatact';
 import Skills from '../../components/Skills';
 import Projects from '../../components/Projects';
+import type { Metadata } from 'next';
+import { orderProjects } from '../../lib/projectOrder';
+import { getAboutText, getLocation, getSeoDescription } from '../../lib/profileCopy';
+
+// Sanity publishes appear without a code deployment; drafts remain private.
+export const revalidate = 60;
 
 const queryPageInfo = groq`
-  *[_type=='pageInfo'] {
-    ...,
-  } | order(_createdAt desc)
-`;
-const querySocials = groq`
-  *[_type=='social'] {
-    ...,
+  (*[_type == 'pageInfo'] | order(_createdAt desc))[0] {
+    name,
+    heroHeadline,
+    heroLines,
+    heroImage,
+    profilePic,
+    backgroundInformation,
+    email,
+    address,
+    contactIntro,
+    seoDescription,
+    "heroImageUrl": coalesce(heroImage.asset->url, heroImageUrl),
+    "profilePicUrl": coalesce(profilePic.asset->url, profilePicUrl),
+    "resumeUrl": resume.asset->url,
   }
 `;
-const queryExperience = groq`
-  *[_type=='experience'] {
+const querySocials = groq`
+  *[_type == 'social' && coalesce(hidden, false) == false] {
     ...,
-  } | order(dateEnded desc)
+  } | order(coalesce(displayOrder, 9999) asc, title asc)
+`;
+const queryExperience = groq`
+  *[_type == 'experience' && coalesce(hidden, false) == false] {
+    ...,
+    "companyImageUrl": coalesce(companyImage.asset->url, companyImageUrl),
+  } | order(coalesce(displayOrder, 9999) asc, dateEnded desc)
 `;
 const querySkills = groq`
-  *[_type=='skill'] {
+  *[_type == 'skill' && coalesce(hidden, false) == false] {
     ...,
-  } | order(title desc)
+    "imageUrl": coalesce(image.asset->url, imageUrl),
+  } | order(coalesce(displayOrder, 9999) asc, title desc)
 `;
 
 const queryProjects = groq`
-  *[_type=='project'] {
+  *[_type == 'project' && coalesce(hidden, false) == false] {
     ...,
-  } | order(_updatedAt desc)
+    "imageUrl": coalesce(image.asset->url, imageUrl),
+  }
 `;
 
+export async function generateMetadata(): Promise<Metadata> {
+  const pageInfo = await client.fetch<PageInfo | null>(queryPageInfo);
+  const name = pageInfo?.name?.trim() || 'Fernando Navarro';
+  const title = `${name} | GIS Web Developer`;
+  const description = getSeoDescription(pageInfo?.seoDescription);
+  return {
+    title,
+    description,
+    openGraph: { title, description, type: 'website', url: 'https://fn-dev.com' },
+    twitter: { card: 'summary', title, description },
+  };
+}
+
 export default async function HomePage() {
-  const pageInfoArray = await client.fetch(queryPageInfo);
-  const pageInfo = pageInfoArray[0];
-  const socials = await client.fetch(querySocials);
-  const experience = await client.fetch(queryExperience);
-  const skills = await client.fetch(querySkills);
-  const projects = await client.fetch(queryProjects);
+  const [pageInfo, socials, experience, skills, projects] = await Promise.all([
+    client.fetch<PageInfo | null>(queryPageInfo),
+    client.fetch<Social[]>(querySocials),
+    client.fetch<Experience[]>(queryExperience),
+    client.fetch<Skill[]>(querySkills),
+    client.fetch<Project[]>(queryProjects),
+  ]);
+
+  if (!pageInfo) {
+    throw new Error('Create and publish a Profile and homepage document in Sanity Studio.');
+  }
+
+  const publicPageInfo = {
+    ...pageInfo,
+    backgroundInformation: getAboutText(pageInfo.backgroundInformation),
+    address: getLocation(pageInfo.address),
+  };
 
   return (
     <div className="z-0 h-[100svh] pb-[env(safe-area-inset-bottom)] snap-y snap-mandatory overflow-y-scroll bg-[rgb(36,36,36)] text-white scrollbar overflow-x-hidden scrollbar-track-gray-400/20 scrollbar-thumb-[#ff25e2]/20">
-      <Header socials={socials} />
+      <Header socials={socials} email={pageInfo.email || 'fn@fn-dev.com'} />
 
       <section id="hero" className="snap-center">
-        <Hero pageInfo={pageInfo} />
+        <Hero pageInfo={publicPageInfo} />
       </section>
 
       <section id="about" className="snap-center">
-        <About pageInfo={pageInfo} />
+        <About pageInfo={publicPageInfo} />
       </section>
 
       <section id="experience" className="snap-center">
@@ -65,11 +110,11 @@ export default async function HomePage() {
       </section>
 
       <section id="projects" className="snap-start">
-        <Projects projects={projects} />
+        <Projects projects={orderProjects(projects)} />
       </section>
 
       <section id="contact" className="snap-start">
-        <Contact />
+        <Contact pageInfo={publicPageInfo} />
       </section>
 
       <footer className="sticky bottom-2 sm:bottom-5 w-full">
@@ -92,7 +137,7 @@ export default async function HomePage() {
             </svg>
           </a>
           <a
-            href="/Fernando-Navarro-Resume(5.3).pdf"
+            href={pageInfo.resumeUrl || '/Fernando-Navarro-Resume(5.3).pdf'}
             download
             className="justify-self-end flex items-center text-xs md:text-sm uppercase text-gray-400 p-2 rounded-xl hover:bg-[#ff25e2]/20"
           >

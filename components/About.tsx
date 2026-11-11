@@ -2,6 +2,7 @@
 /* eslint-disable react/no-unescaped-entities */
 import { motion } from 'framer-motion';
 import React from 'react';
+import { getAboutText } from '../lib/profileCopy';
 
 type Props = {
   pageInfo: PageInfo;
@@ -30,6 +31,7 @@ export default function About({ pageInfo }: Props) {
         whileInView={{ opacity: 1, x: 0 }}
         viewport={{ once: true }}
         src={pageInfo.profilePicUrl}
+        alt={pageInfo.profilePic?.alt || `${pageInfo.name} portrait`}
         className="md:h-95 -mb-20 mt-10 md:mt-0 h-36 w-36 sm:h-56 sm:w-56 flex-shrink-0 rounded-full object-cover md:mb-0 md:w-64 md:rounded-lg xl:h-[600px] xl:w-[500px]"
       />
       <div className="space-y-8 px-0 md:px-10">
@@ -37,7 +39,7 @@ export default function About({ pageInfo }: Props) {
           A bit about me
         </h4>
         <p className="text-xs sm:text-sm md:text-base">
-          {pageInfo.backgroundInformation}
+          {getAboutText(pageInfo.backgroundInformation)}
         </p>
       </div>
     </motion.div>

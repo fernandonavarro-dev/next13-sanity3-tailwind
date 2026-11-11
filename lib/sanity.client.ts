@@ -8,5 +8,6 @@ export const client = createClient({
   projectId,
   dataset,
   apiVersion,
-  useCdn: process.env.NODE_ENV === 'production',
+  // ISR controls freshness; avoid a second, independently stale CDN cache.
+  useCdn: false,
 });

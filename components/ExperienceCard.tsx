@@ -8,7 +8,7 @@ type Props = {
 
 export default function ExperienceCard({ experience, skills }: Props) {
   return (
-    <article className="flex w-[500px] h-[73vh] flex-shrink-0 cursor-pointer snap-center flex-col items-center space-y-8 overflow-x-hidden overflow-y-scroll scrollbar-none rounded-lg bg-[#303030] p-6 lg:p-10 opacity-40 transition-opacity duration-200 hover:opacity-100 lg:w-[600px] xl:w-[800px]">
+    <article className="flex w-[min(90vw,500px)] h-[73vh] flex-shrink-0 snap-center flex-col items-center space-y-8 overflow-x-hidden overflow-y-scroll scrollbar-none rounded-lg bg-[#303030] p-6 lg:p-10 lg:w-[600px] xl:w-[800px]">
       <motion.img
         initial={{
           y: -100,
@@ -19,7 +19,7 @@ export default function ExperienceCard({ experience, skills }: Props) {
         viewport={{ once: true }}
         className="h-20 w-20 sm:h-24 sm:w-24 lg:h-32 lg:w-32 rounded-full object-cover object-center"
         src={experience.companyImageUrl}
-        alt=""
+        alt={experience.companyImage?.alt || experience.company}
       />
       <div className="px-0 lg:px-10">
         <h4 className="text-l sm:text-xl lg:text-3xl font-light">
@@ -50,7 +50,7 @@ export default function ExperienceCard({ experience, skills }: Props) {
             year: 'numeric',
           })}{' '}
           -{' '}
-          {experience.dateEnded
+          {experience.presentlyEmployed ? 'Present' : experience.dateEnded
             ? new Date(experience.dateEnded).toLocaleString('en-US', {
                 month: 'short',
                 year: 'numeric',
