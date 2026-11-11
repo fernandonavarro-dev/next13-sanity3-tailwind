@@ -1,5 +1,44 @@
 [
   {
+    "slug": "rural-home-guide",
+    "title": "Rural Home Guide",
+    "category": "Live GIS product",
+    "role": "Product & GIS Web Developer",
+    "summary": "A bilingual rural-homebuying guide with an interactive county explorer spanning 21 states. It brings together land-value, hazard, broadband, and USDA loan-eligibility data, then connects buyers to parcel-first due-diligence checklists.",
+    "techLabels": [
+      "Next.js",
+      "TypeScript",
+      "Tailwind CSS",
+      "MapLibre GL JS",
+      "USDA ArcGIS REST"
+    ],
+    "bullets": [
+      "Built a MapLibre county explorer with switchable layers, source and vintage labels, and shareable state and county views.",
+      "Integrated USDA Rural Development's live eligibility overlay with an official exact-address checker; county data is presented as screening context, not parcel verification.",
+      "Connected map exploration to county checklists that guide buyers to official records for zoning, access, water, hazards, and other property questions."
+    ],
+    "businessImpact": "A live, public product connecting GIS screening with practical rural property due diligence; currently covers 135 researched areas in 21 states.",
+    "displayOrder": 5,
+    "linkToBuild": "https://www.ruralhomeguide.com/explore",
+    "gallery": [
+      {
+        "url": "/case-studies/rhg-01-explorer-farm-value-21-states.png",
+        "caption": "County explorer: farm-value screening across 21 states",
+        "alt": "Rural Home Guide county explorer showing farm-value colors, 135 researched areas, map layer choices, and a value legend."
+      },
+      {
+        "url": "/case-studies/rhg-02-usda-eligibility-overlay-wa.png",
+        "caption": "Washington USDA eligibility screening",
+        "alt": "Washington map with USDA ineligible areas shaded orange and a link to the official exact-address checker."
+      },
+      {
+        "url": "/case-studies/rhg-03-okanogan-county-checklist.png",
+        "caption": "Parcel-first Okanogan County checklist",
+        "alt": "Okanogan County buyer checklist starting with a parcel number and linking to the county assessor map."
+      }
+    ]
+  },
+  {
     "slug": "enterprise-gis-operations-dashboard",
     "title": "Enterprise GIS Operations & Outage Dashboard",
     "role": "GIS Front-End Engineer | ArcGIS & React Integration",

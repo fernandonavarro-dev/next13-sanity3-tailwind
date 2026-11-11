@@ -52,7 +52,7 @@ export function selectPortfolioProjects(projects: Project[]): PortfolioProject[]
   const starter: PortfolioProject[] = starterCaseStudies.map((study) => ({
     ...study,
     id: `starter-${study.slug}`,
-    category: 'Utility GIS case study',
+    category: 'category' in study && typeof study.category === 'string' ? study.category : 'Utility GIS case study',
   }));
   const bySlug = new Map(projects.filter((project) => project.slug?.current)
     .map((project) => [project.slug!.current, project]));

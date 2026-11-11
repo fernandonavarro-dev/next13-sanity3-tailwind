@@ -10,7 +10,7 @@ export default function Projects({ projects }: Props) {
         Projects
       </h3>
       <p className="mx-auto mt-5 max-w-2xl text-center text-sm leading-relaxed text-gray-300 sm:text-base">
-        GIS web applications for utility operations, work planning, and reliability.
+        GIS products and applications for rural buyers, utility operations, work planning, and reliability.
       </p>
 
       <div className="mt-10 space-y-8">
@@ -29,9 +29,9 @@ export default function Projects({ projects }: Props) {
               </div>
 
               {project.gallery.length > 0 && (
-                <div className="grid content-start gap-4 lg:col-start-2 lg:row-span-2 lg:row-start-1">
-                  {project.gallery.map((image) => (
-                    <figure key={image.url} className="overflow-hidden rounded-xl border border-gray-700 bg-[#242424]">
+                <div className={`grid content-start gap-4 lg:col-start-2 lg:row-span-2 lg:row-start-1 ${project.gallery.length > 2 ? 'grid-cols-1 sm:grid-cols-2' : 'grid-cols-1'}`}>
+                  {project.gallery.map((image, index) => (
+                    <figure key={image.url} className={`overflow-hidden rounded-xl border border-gray-700 bg-[#242424] ${project.gallery.length > 2 && index === 0 ? 'sm:col-span-2' : ''}`}>
                       <img className="h-auto w-full" src={image.url} alt={image.alt} loading="lazy" />
                       {image.caption && <figcaption className="px-4 py-3 text-xs text-gray-400">{image.caption}</figcaption>}
                     </figure>
@@ -67,7 +67,7 @@ export default function Projects({ projects }: Props) {
                 )}
                 {(project.linkToBuild || project.repositoryUrl) && (
                   <div className="mt-6 flex flex-wrap gap-5 text-sm">
-                    {project.linkToBuild && <a className="underline decoration-[#ff25e2] underline-offset-4" href={project.linkToBuild}>View project</a>}
+                    {project.linkToBuild && <a className="underline decoration-[#ff25e2] underline-offset-4" href={project.linkToBuild}>Explore live site</a>}
                     {project.repositoryUrl && <a className="underline decoration-[#ff25e2] underline-offset-4" href={project.repositoryUrl}>View repository</a>}
                   </div>
                 )}
