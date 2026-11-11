@@ -2,6 +2,7 @@ import starterCaseStudies from '../data/caseStudies.json';
 import { isLegacyProject } from './projectOrder';
 
 export type ProjectImage = { url: string; caption?: string; alt: string };
+export type ProjectMetric = { value: string; label: string; status: string; context: string };
 
 export type PortfolioProject = {
   id: string;
@@ -13,6 +14,7 @@ export type PortfolioProject = {
   techLabels: string[];
   bullets: string[];
   businessImpact?: string;
+  metric?: ProjectMetric;
   gallery: ProjectImage[];
   displayOrder: number;
   linkToBuild?: string;
@@ -36,6 +38,7 @@ function fromSanity(project: Project, starter?: PortfolioProject): PortfolioProj
     techLabels: project.techLabels ?? starter?.techLabels ?? [],
     bullets: project.bullets ?? starter?.bullets ?? [],
     businessImpact: project.businessImpact || starter?.businessImpact,
+    metric: project.metric?.value ? project.metric : starter?.metric,
     gallery: gallery ?? (project.imageUrl
       ? [{ url: project.imageUrl, alt: project.image?.alt || project.title }]
       : starter?.gallery ?? []),

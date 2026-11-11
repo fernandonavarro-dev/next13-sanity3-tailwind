@@ -50,6 +50,14 @@ export default function Projects({ projects }: Props) {
                     {project.businessImpact}
                   </p>
                 )}
+                {project.metric && (
+                  <aside className="mt-5 rounded-xl border border-[#ff25e2]/40 bg-[#262626] p-4" aria-label={`${project.metric.status}: ${project.metric.label}`}>
+                    <p className="text-xs uppercase tracking-[2px] text-[#ff8af0]">{project.metric.status}</p>
+                    <p className="mt-2 text-2xl font-semibold text-white sm:text-3xl">{project.metric.value}</p>
+                    <p className="text-sm font-medium text-gray-100">{project.metric.label}</p>
+                    <p className="mt-2 text-xs leading-relaxed text-gray-300">{project.metric.context}</p>
+                  </aside>
+                )}
                 {project.techLabels.length > 0 && (
                   <ul aria-label="Technologies" className="mt-6 flex flex-wrap gap-2">
                     {project.techLabels.map((tech) => (

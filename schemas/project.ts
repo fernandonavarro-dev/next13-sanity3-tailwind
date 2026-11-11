@@ -62,7 +62,17 @@ export default defineType({
     defineField({ name: 'bullets', title: 'What I built', type: 'array', of: [{ type: 'string' }] }),
     defineField({
       name: 'businessImpact', title: 'Public impact statement', type: 'text', rows: 2,
-      description: 'Describe the contribution without claiming unapproved figures or sole credit for program outcomes.',
+      description: 'Describe your contribution without assigning program-wide results to one feature or person.',
+    }),
+    defineField({
+      name: 'metric', title: 'Program metric', type: 'object',
+      description: 'Optional. Keep realized results distinct from forecasts, and state the source, period, scope, and attribution in context.',
+      fields: [
+        defineField({ name: 'value', title: 'Value', type: 'string' }),
+        defineField({ name: 'label', title: 'What it measures', type: 'string' }),
+        defineField({ name: 'status', title: 'Reported result or forecast', type: 'string' }),
+        defineField({ name: 'context', title: 'Source, period, scope, and attribution', type: 'text', rows: 3 }),
+      ],
     }),
     defineField({
       name: 'gallery', title: 'Screenshots', type: 'array',

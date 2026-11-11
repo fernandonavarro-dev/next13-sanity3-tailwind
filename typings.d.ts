@@ -64,6 +64,7 @@ interface Experience extends Base {
   presentlyEmployed: boolean;
   jobTitle: string;
   points: string[];
+  publicPoints?: string[];
   technologies: Technology[];
   displayOrder?: number;
   hidden?: boolean;
@@ -83,6 +84,7 @@ interface Project extends Base {
   techLabels?: string[];
   bullets?: string[];
   businessImpact?: string;
+  metric?: { value: string; label: string; status: string; context: string };
   gallery?: { url?: string; caption?: string; alt?: string }[];
   category?: string;
   featured?: boolean;

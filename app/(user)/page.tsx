@@ -11,6 +11,7 @@ import Projects from '../../components/Projects';
 import type { Metadata } from 'next';
 import { selectPortfolioProjects } from '../../lib/portfolioProjects';
 import { getAboutText, getLocation, getSeoDescription } from '../../lib/profileCopy';
+import { publicExperience } from '../../lib/experienceCopy';
 
 // Sanity publishes appear without a code deployment; drafts remain private.
 export const revalidate = 60;
@@ -110,7 +111,7 @@ export default async function HomePage() {
       </section>
 
       <section id="experience" className="snap-center">
-        <Experience experiences={experience} skills={visibleSkills} />
+        <Experience experiences={experience.map(publicExperience)} skills={visibleSkills} />
       </section>
 
       <section id="skills" className="snap-start">

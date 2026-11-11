@@ -20,6 +20,12 @@
       "Helped streamline how operations teams explore geographically distributed activity and prepare situation reports."
     ],
     "businessImpact": "Contributed to GIS reporting workflows that help teams prepare situation reports.",
+    "metric": {
+      "value": "6,800",
+      "label": "manual hours saved to date",
+      "status": "Reported program result",
+      "context": "Reported for the broader Situational Report capability on a 2025 program slide; not an individual developer result. Exact as-of date was not specified."
+    },
     "displayOrder": 10,
     "gallery": [
       {
@@ -55,6 +61,12 @@
       "Supported planning and work-bundling workflows intended to reduce manual GIS analysis and improve coordination."
     ],
     "businessImpact": "Built spatial-search tools to support work planning and coordination.",
+    "metric": {
+      "value": "$56.6M",
+      "label": "total bundling savings",
+      "status": "Reported program result",
+      "context": "Reported for the overall electric-distribution work-bundling program, including megabundles, through October on a 2025 program slide; not attributable solely to these spatial-search tools."
+    },
     "displayOrder": 20,
     "gallery": [
       {
@@ -115,6 +127,12 @@
       "Contributed to a broader transmission work-planning initiative with forecast efficiency savings."
     ],
     "businessImpact": "Supported transmission work planning across multiple releases.",
+    "metric": {
+      "value": "$4.4M",
+      "label": "projected 2026 savings",
+      "status": "Program forecast, not realized",
+      "context": "Forecast for the broader transmission work-bundling program on a 2025 release slide; not an individual developer result."
+    },
     "displayOrder": 40,
     "gallery": []
   }
