@@ -9,6 +9,7 @@ export default function Projects({ projects }: Props) {
   const [selectedId, setSelectedId] = useState<string | null>(projects[0]?.id ?? null);
   const tabRefs = useRef<Array<HTMLButtonElement | null>>([]);
   const selected = projects.find((project) => project.id === selectedId) ?? projects[0];
+  const hasStory = Boolean(selected?.problem && selected?.solution && selected?.result);
 
   function handleTabKeyDown(event: React.KeyboardEvent<HTMLButtonElement>, index: number) {
     let next = index;
@@ -70,7 +71,20 @@ export default function Projects({ projects }: Props) {
               <p className="text-xs uppercase tracking-[3px] text-[#ff8af0]">{selected.category || 'Project'}</p>
               <h4 className="mt-2 text-2xl font-semibold leading-tight sm:text-3xl lg:text-4xl">{selected.title}</h4>
               {selected.role && <p className="mt-2 text-sm text-gray-400">{selected.role}</p>}
-              <p className="mt-4 max-w-3xl leading-relaxed text-gray-200">{selected.summary}</p>
+              {hasStory ? (
+                <dl className="mt-5 grid gap-3 md:grid-cols-3">
+                  {([
+                    ['Problem', selected.problem],
+                    ['Built', selected.solution],
+                    ['Result', selected.result],
+                  ] as const).map(([label, value]) => (
+                    <div key={label} className="rounded-xl border border-gray-600 bg-[#292929] p-4">
+                      <dt className="text-xs font-semibold uppercase tracking-[2px] text-[#ff8af0]">{label}</dt>
+                      <dd className="mt-2 text-sm leading-relaxed text-gray-200">{value}</dd>
+                    </div>
+                  ))}
+                </dl>
+              ) : <p className="mt-4 max-w-3xl leading-relaxed text-gray-200">{selected.summary}</p>}
               {(selected.linkToBuild || selected.repositoryUrl) && (
                 <div className="mt-5 flex flex-wrap gap-3 text-sm">
                   {selected.linkToBuild && <a className="rounded-full border border-[#ff25e2] px-4 py-2 font-medium text-white hover:bg-[#ff25e2]/20 focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#ff8af0]" href={selected.linkToBuild}>Explore live site ↗</a>}

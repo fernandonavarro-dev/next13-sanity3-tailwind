@@ -10,6 +10,9 @@ export type PortfolioProject = {
   title: string;
   role?: string;
   summary: string;
+  problem?: string;
+  solution?: string;
+  result?: string;
   category?: string;
   techLabels: string[];
   bullets: string[];
@@ -34,12 +37,15 @@ function fromSanity(project: Project, starter?: PortfolioProject): PortfolioProj
     title: project.title || starter?.title || '',
     role: project.role || starter?.role,
     summary: project.summary || starter?.summary || '',
+    problem: project.problem || starter?.problem,
+    solution: project.solution || starter?.solution,
+    result: project.result || starter?.result,
     category: project.category || starter?.category,
-    techLabels: project.techLabels ?? starter?.techLabels ?? [],
-    bullets: project.bullets ?? starter?.bullets ?? [],
+    techLabels: project.techLabels?.length ? project.techLabels : starter?.techLabels ?? [],
+    bullets: project.bullets?.length ? project.bullets : starter?.bullets ?? [],
     businessImpact: project.businessImpact || starter?.businessImpact,
     metric: project.metric?.value ? project.metric : starter?.metric,
-    gallery: gallery ?? (project.imageUrl
+    gallery: gallery?.length ? gallery : (project.imageUrl
       ? [{ url: project.imageUrl, alt: project.image?.alt || project.title }]
       : starter?.gallery ?? []),
     displayOrder: project.displayOrder ?? starter?.displayOrder ?? 9999,

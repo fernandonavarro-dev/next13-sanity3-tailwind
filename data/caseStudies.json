@@ -77,7 +77,10 @@
         "caption": "Light-theme dashboard with geographic summaries",
         "alt": "Light GIS dashboard showing a map, summary cards, geographic data table, charts, and operational filters."
       }
-    ]
+    ],
+    "problem": "Operations teams needed one geographic view of outages, crew status, and customer impact instead of disconnected reports.",
+    "solution": "I built React and ArcGIS map views with geographic filters, KPI panels, charts, and linked data tables.",
+    "result": "The dashboard supported faster situation reporting; a broader 2025 program slide reported 6,800 manual hours saved to date, not solely by my work."
   },
   {
     "slug": "gis-spatial-search-work-planning",
@@ -113,7 +116,10 @@
         "caption": "Near Me buffer search with linked feature table",
         "alt": "ArcGIS map displaying a circular search area, highlighted line features, a Near Me search panel, counts, and a feature results table."
       }
-    ]
+    ],
+    "problem": "Planners needed to find nearby jobs and assets without repeating manual map and spreadsheet searches.",
+    "solution": "I built buffer-based Near Me searches with selectable layers, highlighted features, counts, and results tables.",
+    "result": "The tools helped teams identify related work for bundling; the wider distribution program reported savings that cannot be attributed to this feature alone."
   },
   {
     "slug": "electric-reliability-kpi-dashboard",
@@ -143,7 +149,10 @@
         "caption": "Electric reliability network map and KPI panel",
         "alt": "Electric reliability GIS dashboard with a regional network map, geographic selector, and performance statistics sidebar."
       }
-    ]
+    ],
+    "problem": "Reliability teams needed to compare outage history and circuit performance across service areas.",
+    "solution": "I built map-linked geographic and circuit selectors alongside reliability KPI and outage views.",
+    "result": "The dashboard supported circuit investigation and prioritization; no project-specific savings figure is claimed."
   },
   {
     "slug": "transmission-work-bundling-planning",
@@ -173,6 +182,9 @@
       "context": "Forecast for the broader transmission work-bundling program on a 2025 release slide; not an individual developer result."
     },
     "displayOrder": 40,
-    "gallery": []
+    "gallery": [],
+    "problem": "Transmission planners needed a clearer way to discover and coordinate spatially related projects and vegetation work.",
+    "solution": "I added map layers, buffer and Near Me searches, exports, and reporting improvements across releases.",
+    "result": "The work supported planning coordination; the broader program forecast 2026 savings, not realized savings attributable to these tools."
   }
 ]
