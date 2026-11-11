@@ -8,6 +8,10 @@ const legacyOrder: Record<string, number> = {
   '0980bdfe-a028-473f-9b01-9d3fd092a070': 40, // Berkeley GIS Database project
 };
 
+export function isLegacyProject(id: string) {
+  return id in legacyOrder;
+}
+
 export function orderProjects(projects: Project[]): Project[] {
   return [...projects].sort((a, b) => {
     const aOrder = a.displayOrder ?? legacyOrder[a._id] ?? Number.MAX_SAFE_INTEGER;

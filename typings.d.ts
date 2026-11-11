@@ -78,6 +78,12 @@ interface Project extends Base {
   summary: string;
   technologies: Technology[];
   repositoryUrl?: string;
+  slug?: { current: string };
+  role?: string;
+  techLabels?: string[];
+  bullets?: string[];
+  businessImpact?: string;
+  gallery?: { url?: string; caption?: string; alt?: string }[];
   category?: string;
   featured?: boolean;
   displayOrder?: number;

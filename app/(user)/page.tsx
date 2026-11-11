@@ -9,7 +9,7 @@ import Contact from '../../components/Conatact';
 import Skills from '../../components/Skills';
 import Projects from '../../components/Projects';
 import type { Metadata } from 'next';
-import { orderProjects } from '../../lib/projectOrder';
+import { selectPortfolioProjects } from '../../lib/portfolioProjects';
 import { getAboutText, getLocation, getSeoDescription } from '../../lib/profileCopy';
 
 // Sanity publishes appear without a code deployment; drafts remain private.
@@ -56,9 +56,10 @@ const querySkills = groq`
 `;
 
 const queryProjects = groq`
-  *[_type == 'project' && coalesce(hidden, false) == false] {
+  *[_type == 'project'] {
     ...,
     "imageUrl": coalesce(image.asset->url, imageUrl),
+    "gallery": gallery[] { ..., "url": coalesce(image.asset->url, url) },
   }
 `;
 
@@ -117,7 +118,7 @@ export default async function HomePage() {
       </section>
 
       <section id="projects" className="snap-start">
-        <Projects projects={orderProjects(projects)} />
+        <Projects projects={selectPortfolioProjects(projects)} />
       </section>
 
       <section id="contact" className="snap-start">
