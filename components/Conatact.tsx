@@ -1,8 +1,9 @@
 'use client';
-import { EnvelopeIcon, MapPinIcon, PhoneIcon } from '@heroicons/react/24/solid';
+import { EnvelopeIcon, MapPinIcon } from '@heroicons/react/24/solid';
 import { motion } from 'framer-motion';
 import React from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
+import { getLocation } from '../lib/profileCopy';
 
 type Inputs = {
   name: string;
@@ -15,12 +16,7 @@ type Props = { pageInfo: PageInfo };
 
 export default function Contact({ pageInfo }: Props) {
   const email = pageInfo.email || 'fn@fn-dev.com';
-  const rawPhone = pageInfo.phoneNumber || '4158537949';
-  const digits = rawPhone.replace(/\D/g, '');
-  const phone = digits.length === 10
-    ? `(${digits.slice(0, 3)}) ${digits.slice(3, 6)}-${digits.slice(6)}`
-    : rawPhone;
-  const location = pageInfo.address || 'San Francisco Bay Area';
+  const location = getLocation(pageInfo.address);
   const { register, handleSubmit } = useForm<Inputs>();
   const onSubmit: SubmitHandler<Inputs> = (FormData, event) => {
     event?.preventDefault();
@@ -45,12 +41,6 @@ export default function Contact({ pageInfo }: Props) {
           {pageInfo.contactIntro || 'Always open to cool projects with good teams. Please reach out.'}
         </h4>
 
-        <div className="space-y-4 md:space-y-10 leading-2 md:leading-0">
-          <div className="flex items-center justify-center space-x-5">
-            <PhoneIcon className="h-5 w-5 sm:h-7 sm:w-7 animate-pulse text-[#ff25e2]" />
-            <a className="text-base sm:text-xl underline" href={`tel:${digits || rawPhone}`}>{phone}</a>
-          </div>
-        </div>
         <div className="space-y-4 md:space-y-10 leading-2 md:leading-0">
           <div className="flex items-center justify-center space-x-5">
             <EnvelopeIcon className="h-5 w-5 sm:h-7 sm:w-7 animate-pulse text-[#ff25e2]" />

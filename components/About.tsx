@@ -2,6 +2,7 @@
 /* eslint-disable react/no-unescaped-entities */
 import { motion } from 'framer-motion';
 import React from 'react';
+import { getAboutText } from '../lib/profileCopy';
 
 type Props = {
   pageInfo: PageInfo;
@@ -38,7 +39,7 @@ export default function About({ pageInfo }: Props) {
           A bit about me
         </h4>
         <p className="text-xs sm:text-sm md:text-base">
-          {pageInfo.backgroundInformation}
+          {getAboutText(pageInfo.backgroundInformation)}
         </p>
       </div>
     </motion.div>
