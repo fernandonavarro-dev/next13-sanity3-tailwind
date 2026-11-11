@@ -9,6 +9,7 @@ import Contact from '../../components/Conatact';
 import Skills from '../../components/Skills';
 import Projects from '../../components/Projects';
 import type { Metadata } from 'next';
+import { orderProjects } from '../../lib/projectOrder';
 
 // Sanity publishes appear without a code deployment; drafts remain private.
 export const revalidate = 60;
@@ -43,7 +44,7 @@ const queryProjects = groq`
   *[_type == 'project' && coalesce(hidden, false) == false] {
     ...,
     "imageUrl": coalesce(image.asset->url, imageUrl),
-  } | order(coalesce(displayOrder, 9999) asc, coalesce(featured, false) desc, _createdAt desc)
+  }
 `;
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -88,7 +89,7 @@ export default async function HomePage() {
       </section>
 
       <section id="projects" className="snap-start">
-        <Projects projects={projects} />
+        <Projects projects={orderProjects(projects)} />
       </section>
 
       <section id="contact" className="snap-start">

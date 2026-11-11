@@ -13,13 +13,28 @@ export default defineType({
     }),
     defineField({
       name: 'roleOne',
-      title: 'Primary role',
+      title: 'Legacy primary role',
+      description: 'Kept for existing content; the hero uses Hero headline instead.',
       type: 'string',
     }),
     defineField({
       name: 'roleTwo',
-      title: 'Secondary role',
+      title: 'Legacy secondary role',
+      description: 'Kept for existing content; the hero uses Hero supporting line instead.',
       type: 'string',
+    }),
+    defineField({
+      name: 'heroHeadline',
+      title: 'Hero headline',
+      description: 'Short, permanent role statement. Defaults to “GIS web developer”.',
+      type: 'string',
+    }),
+    defineField({
+      name: 'heroTagline',
+      title: 'Hero supporting line',
+      description: 'One sentence describing your specialty. Displayed below your name.',
+      type: 'text',
+      rows: 2,
     }),
     defineField({
       name: 'heroImage',
@@ -35,13 +50,6 @@ export default defineType({
       title: 'Legacy hero image URL',
       description: 'Only used until a Sanity hero image is uploaded.',
       type: 'string',
-    }),
-    defineField({
-      name: 'heroLines',
-      title: 'Rotating hero lines',
-      description: 'Optional. Leave empty to keep the current introductory lines.',
-      type: 'array',
-      of: [{ type: 'string' }],
     }),
     defineField({
       name: 'backgroundInformation',
@@ -107,5 +115,5 @@ export default defineType({
       of: [{ type: 'reference', to: { type: 'social' } }],
     }),
   ],
-  preview: { select: { title: 'name', subtitle: 'roleOne', media: 'heroImage' } },
+  preview: { select: { title: 'name', subtitle: 'heroHeadline', media: 'heroImage' } },
 });
