@@ -48,7 +48,7 @@ interface Skill extends Base {
   _type: 'skill';
   image: Image;
   imageUrl: string;
-  progress: number;
+  category?: 'gis' | 'frontend' | 'tools';
   title: string;
   displayOrder?: number;
   hidden?: boolean;
