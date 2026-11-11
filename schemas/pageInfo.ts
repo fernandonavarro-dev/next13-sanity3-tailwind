@@ -30,11 +30,12 @@ export default defineType({
       type: 'string',
     }),
     defineField({
-      name: 'heroTagline',
-      title: 'Hero supporting line',
-      description: 'One sentence describing your specialty. Displayed below your name.',
-      type: 'text',
-      rows: 2,
+      name: 'heroLines',
+      title: 'Rotating hero lines',
+      description: 'Exactly three short lines. Leave empty to use the GIS-focused defaults.',
+      type: 'array',
+      of: [{ type: 'string' }],
+      validation: (Rule) => Rule.min(3).max(3),
     }),
     defineField({
       name: 'heroImage',
