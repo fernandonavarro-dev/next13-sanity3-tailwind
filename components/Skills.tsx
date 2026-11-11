@@ -1,36 +1,36 @@
 'use client';
-import { motion } from 'framer-motion';
 import React from 'react';
-import Skill from './Skill';
+import { groupStack, skillGroups } from '../lib/skillGroups';
 
 type Props = {
   skills: Skill[];
+  hasTypeScriptRecord: boolean;
 };
 
-export default function Skills({ skills }: Props) {
+export default function Skills({ skills, hasTypeScriptRecord }: Props) {
+  const grouped = groupStack(skills, hasTypeScriptRecord);
   return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      whileInView={{ opacity: 1 }}
-      transition={{ duration: 1.5 }}
-      className="relative mx-auto flex h-screen max-w-full flex-col items-center justify-evenly overflow-hidden px-10 text-left md:flex-row"
-    >
-      <h3 className="absolute top-24 text-2xl uppercase tracking-[20px] text-gray-500">
+    <div className="relative mx-auto flex min-h-[100svh] max-w-5xl flex-col justify-center px-6 pb-20 pt-28 sm:px-10">
+      <h3 className="text-center text-2xl uppercase tracking-[12px] text-gray-500 sm:tracking-[20px]">
         Skills
       </h3>
-
-      <h3 className=" absolute top-36 text-center text-sm uppercase tracking-[3px] text-gray-500">
-        Tech proficiency
-      </h3>
-      <div className="mt-24 grid grid-cols-4 gap-2 md:gap-4">
-        {skills?.slice(0, skills.length / 2).map((skill) => (
-          <Skill key={skill._id} skill={skill} />
-        ))}
-
-        {skills?.slice(skills.length / 2, skills.length).map((skill) => (
-          <Skill key={skill._id} skill={skill} directionLeft />
+      <p className="mt-5 text-center text-sm text-gray-400 sm:text-base">
+        Tools I use to turn spatial data into useful applications.
+      </p>
+      <div className="mt-10 grid w-full gap-5 md:grid-cols-2">
+        {skillGroups.map((group) => (
+          <section key={group.id} aria-labelledby={`skills-${group.id}`} className={`rounded-xl border border-gray-700/70 bg-[#303030] p-5 sm:p-6 ${group.id === 'tools' ? 'md:col-span-2' : ''}`}>
+            <h4 id={`skills-${group.id}`} className="text-xl font-semibold text-white">{group.title}</h4>
+            <ul className="mt-5 flex flex-wrap gap-2">
+              {grouped[group.id].map((skill) => (
+                <li key={skill.id} className="rounded-full border border-gray-600 px-3 py-2 text-sm text-gray-200">
+                  {skill.title}
+                </li>
+              ))}
+            </ul>
+          </section>
         ))}
       </div>
-    </motion.div>
+    </div>
   );
 }

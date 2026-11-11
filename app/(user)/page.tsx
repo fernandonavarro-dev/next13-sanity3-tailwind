@@ -44,8 +44,13 @@ const queryExperience = groq`
   } | order(coalesce(displayOrder, 9999) asc, dateEnded desc)
 `;
 const querySkills = groq`
-  *[_type == 'skill' && coalesce(hidden, false) == false] {
-    ...,
+  *[_type == 'skill'] {
+    _id,
+    title,
+    category,
+    displayOrder,
+    hidden,
+    image,
     "imageUrl": coalesce(image.asset->url, imageUrl),
   } | order(coalesce(displayOrder, 9999) asc, title desc)
 `;
@@ -88,6 +93,8 @@ export default async function HomePage() {
     backgroundInformation: getAboutText(pageInfo.backgroundInformation),
     address: getLocation(pageInfo.address),
   };
+  const visibleSkills = skills.filter((skill) => !skill.hidden);
+  const hasTypeScriptRecord = skills.some((skill) => skill.title.trim().toLowerCase() === 'typescript');
 
   return (
     <div className="z-0 h-[100svh] pb-[env(safe-area-inset-bottom)] snap-y snap-mandatory overflow-y-scroll bg-[rgb(36,36,36)] text-white scrollbar overflow-x-hidden scrollbar-track-gray-400/20 scrollbar-thumb-[#ff25e2]/20">
@@ -102,11 +109,11 @@ export default async function HomePage() {
       </section>
 
       <section id="experience" className="snap-center">
-        <Experience experiences={experience} skills={skills} />
+        <Experience experiences={experience} skills={visibleSkills} />
       </section>
 
       <section id="skills" className="snap-start">
-        <Skills skills={skills} />
+        <Skills skills={visibleSkills} hasTypeScriptRecord={hasTypeScriptRecord} />
       </section>
 
       <section id="projects" className="snap-start">
