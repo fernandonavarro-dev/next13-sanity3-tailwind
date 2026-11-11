@@ -146,7 +146,7 @@ export default async function HomePage() {
             </svg>
           </a>
           <a
-            href={pageInfo.resumeUrl || '/Fernando-Navarro-Resume(5.3).pdf'}
+            href={pageInfo.resumeUrl || '/Fernando-Navarro-Resume.pdf'}
             download
             className="justify-self-end flex items-center text-xs md:text-sm uppercase text-gray-400 p-2 rounded-xl hover:bg-[#ff25e2]/20"
           >
