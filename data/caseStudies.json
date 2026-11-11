@@ -1,0 +1,139 @@
+[
+  {
+    "slug": "enterprise-gis-operations-dashboard",
+    "title": "Enterprise GIS Operations & Outage Dashboard",
+    "role": "GIS Front-End Engineer | ArcGIS & React Integration",
+    "summary": "A map-centric operations dashboard combining geographic filters, outage and crew status visualization, KPI reporting, charts, and interactive data tables. Built for enterprise workflows where teams need a consolidated picture of operational activity.",
+    "techLabels": [
+      "React",
+      "TypeScript",
+      "ArcGIS Maps SDK for JavaScript",
+      "ArcGIS Feature Services",
+      "Redux Toolkit",
+      "Data Visualization"
+    ],
+    "bullets": [
+      "Developed interactive web GIS components that combine operational maps, performance KPIs, charts, and reporting tools.",
+      "Implemented geographic and status filters to connect map features with outage, crew-status, and customer-impact views.",
+      "Built data tables and visualizations that respond to the selected geography and operational filters.",
+      "Supported light and dark interface themes for different user preferences and working environments.",
+      "Helped streamline how operations teams explore geographically distributed activity and prepare situation reports."
+    ],
+    "businessImpact": "Contributed to GIS reporting workflows that help teams prepare situation reports.",
+    "metric": {
+      "value": "6,800",
+      "label": "manual hours saved to date",
+      "status": "Reported program result",
+      "context": "Reported for the broader Situational Report capability on a 2025 program slide; not an individual developer result. Exact as-of date was not specified."
+    },
+    "displayOrder": 10,
+    "gallery": [
+      {
+        "url": "/case-studies/utility-operations-dashboard-dark.png",
+        "caption": "Dark-theme operations overview",
+        "alt": "Dark GIS operations dashboard showing a map, outage symbols, filters, KPI panels, a chart, and selectable report tabs."
+      },
+      {
+        "url": "/case-studies/utility-operations-dashboard-light.png",
+        "caption": "Light-theme dashboard with geographic summaries",
+        "alt": "Light GIS dashboard showing a map, summary cards, geographic data table, charts, and operational filters."
+      }
+    ]
+  },
+  {
+    "slug": "gis-spatial-search-work-planning",
+    "title": "GIS Spatial Search & Work Planning",
+    "role": "GIS Web Developer | Spatial Analysis & Map Integration",
+    "summary": "An ArcGIS-based spatial search interface that helps users discover nearby work and assets through buffer queries, layer selection, map highlighting, and an interactive results table. Useful for infrastructure planning and coordinating geographically related work.",
+    "techLabels": [
+      "React",
+      "TypeScript",
+      "ArcGIS Maps SDK for JavaScript",
+      "ArcGIS Feature Services",
+      "Spatial Queries",
+      "Feature Tables"
+    ],
+    "bullets": [
+      "Developed distance-based Near Me search tools for jobs, assets, and infrastructure features.",
+      "Connected configurable search geometry and units with ArcGIS spatial queries.",
+      "Integrated multiple map layers, feature counts, spatial selections, and tabular results.",
+      "Enabled users to visualize work occurring in a common area or along related infrastructure.",
+      "Supported planning and work-bundling workflows intended to reduce manual GIS analysis and improve coordination."
+    ],
+    "businessImpact": "Built spatial-search tools to support work planning and coordination.",
+    "metric": {
+      "value": "$56.6M",
+      "label": "total bundling savings",
+      "status": "Reported program result",
+      "context": "Reported for the overall electric-distribution work-bundling program, including megabundles, through October on a 2025 program slide; not attributable solely to these spatial-search tools."
+    },
+    "displayOrder": 20,
+    "gallery": [
+      {
+        "url": "/case-studies/arcgis-spatial-search-work-planning.png",
+        "caption": "Near Me buffer search with linked feature table",
+        "alt": "ArcGIS map displaying a circular search area, highlighted line features, a Near Me search panel, counts, and a feature results table."
+      }
+    ]
+  },
+  {
+    "slug": "electric-reliability-kpi-dashboard",
+    "title": "Electric Reliability & Circuit Performance Dashboard",
+    "role": "GIS Web Developer | Reliability Analytics & KPI Integration",
+    "summary": "A geospatial analytics dashboard for exploring electric distribution reliability. It brings network map layers, geographic selectors, outage summaries, and reliability indicators into one decision-support interface.",
+    "techLabels": [
+      "React",
+      "TypeScript",
+      "ArcGIS Maps SDK for JavaScript",
+      "ArcGIS Feature Services",
+      "KPI Reporting",
+      "Spatial Filtering"
+    ],
+    "bullets": [
+      "Developed web GIS features to visualize electric network assets and reliability information by geography.",
+      "Implemented region, division, district, and circuit selection workflows for targeted analysis.",
+      "Integrated reliability measures such as CEMI, CAIDI, SAIDI, SAIFI, and outage history into KPI views.",
+      "Built map-linked filtering and reporting components to help evaluate circuit performance.",
+      "Supported reliability planning workflows for identifying areas requiring closer investigation and prioritization."
+    ],
+    "businessImpact": "Supported geographic reliability analysis and circuit prioritization.",
+    "displayOrder": 30,
+    "gallery": [
+      {
+        "url": "/case-studies/electric-reliability-kpi-dashboard.png",
+        "caption": "Electric reliability network map and KPI panel",
+        "alt": "Electric reliability GIS dashboard with a regional network map, geographic selector, and performance statistics sidebar."
+      }
+    ]
+  },
+  {
+    "slug": "transmission-work-bundling-planning",
+    "title": "Transmission Work Bundling & Planning Tools",
+    "role": "GIS Web Developer | Spatial Search & Workflow Enhancements",
+    "summary": "A transmission-focused mapping and work-planning platform that evolved through feature releases including buffer / Near Me searches, data overlays, exports, and reporting to support coordinated work planning.",
+    "techLabels": [
+      "React",
+      "TypeScript",
+      "ArcGIS Maps SDK for JavaScript",
+      "ArcGIS Feature Services",
+      "Spatial Queries",
+      "GIS Reporting"
+    ],
+    "bullets": [
+      "Enhanced map-based tools for viewing transmission projects, tags, and vegetation-related work.",
+      "Added buffer / Near Me workflows for finding work items near a selected area.",
+      "Supported layer visualization, export, and reporting enhancements across successive releases.",
+      "Helped make spatially related jobs easier to discover and coordinate for planning teams.",
+      "Contributed to a broader transmission work-planning initiative with forecast efficiency savings."
+    ],
+    "businessImpact": "Supported transmission work planning across multiple releases.",
+    "metric": {
+      "value": "$4.4M",
+      "label": "projected 2026 savings",
+      "status": "Program forecast, not realized",
+      "context": "Forecast for the broader transmission work-bundling program on a 2025 release slide; not an individual developer result."
+    },
+    "displayOrder": 40,
+    "gallery": []
+  }
+]
