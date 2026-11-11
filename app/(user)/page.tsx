@@ -118,7 +118,7 @@ export default async function HomePage() {
         <Skills skills={visibleSkills} hasTypeScriptRecord={hasTypeScriptRecord} />
       </section>
 
-      <section id="projects" className="snap-start">
+      <section id="projects" className="snap-center">
         <Projects projects={selectPortfolioProjects(projects)} />
       </section>
 

@@ -1,31 +1,56 @@
-import React from 'react';
+'use client';
+
+import React, { useState } from 'react';
 import type { PortfolioProject } from '../lib/portfolioProjects';
 
 type Props = { projects: PortfolioProject[] };
 
 export default function Projects({ projects }: Props) {
-  return (
-    <div className="mx-auto max-w-6xl px-6 pb-24 pt-28 text-white sm:px-10">
-      <h3 className="text-center text-2xl uppercase tracking-[12px] text-gray-500 sm:tracking-[20px]">
-        Projects
-      </h3>
-      <p className="mx-auto mt-5 max-w-2xl text-center text-sm leading-relaxed text-gray-300 sm:text-base">
-        GIS products and applications for rural buyers, utility operations, work planning, and reliability.
-      </p>
+  const [openId, setOpenId] = useState<string | null>(projects[0]?.id ?? null);
 
-      <div className="mt-10 space-y-8">
-        {projects.map((project) => (
-          <article key={project.id} className="rounded-2xl border border-gray-700 bg-[#303030] p-5 sm:p-8">
-            <div className={`grid gap-8 ${project.gallery.length ? 'lg:grid-cols-2' : ''}`}>
+  return (
+    <div className="mx-auto flex h-[100svh] min-h-0 max-w-6xl flex-col overflow-hidden px-4 pb-12 pt-12 text-white sm:px-8 sm:pb-20 sm:pt-20">
+      <div className="shrink-0 pb-2 text-center sm:pb-6">
+        <h3 className="text-lg uppercase tracking-[9px] text-gray-400 sm:text-2xl sm:tracking-[20px]">Projects</h3>
+        <p className="mx-auto mt-2 hidden max-w-2xl text-xs leading-relaxed text-gray-300 sm:mt-3 sm:block sm:text-sm">
+          GIS products and applications for rural buyers, utility operations, work planning, and reliability.
+        </p>
+      </div>
+
+      <div className="flex min-h-0 flex-1 flex-col gap-1.5 sm:gap-3">
+        {projects.map((project) => {
+          const isOpen = openId === project.id;
+          const buttonId = `project-button-${project.slug}`;
+          const panelId = `project-panel-${project.slug}`;
+          return (
+          <article key={project.id} className={`flex min-h-0 flex-col overflow-hidden rounded-xl border bg-[#303030] ${isOpen ? 'flex-1 border-[#ff25e2]/60' : 'shrink-0 border-gray-700'}`}>
+            <h4 className="shrink-0">
+              <button
+                id={buttonId}
+                type="button"
+                aria-expanded={isOpen}
+                aria-controls={panelId}
+                onClick={() => setOpenId(isOpen ? null : project.id)}
+                onKeyDown={(event) => {
+                  if (event.key === 'Enter') {
+                    event.preventDefault();
+                    setOpenId(isOpen ? null : project.id);
+                  }
+                }}
+                className="flex w-full items-center justify-between gap-3 px-4 py-1.5 text-left hover:bg-white/5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-[#ff8af0] sm:px-6 sm:py-3"
+              >
+                <span className="min-w-0">
+                  <span className="block text-[10px] uppercase tracking-[2px] text-[#ff8af0] sm:text-xs">{project.category || 'Project'}</span>
+                  <span className="block text-sm font-semibold leading-snug sm:text-lg">{project.title}</span>
+                </span>
+                <span aria-hidden="true" className="shrink-0 text-xl leading-none text-[#ff8af0]">{isOpen ? '−' : '+'}</span>
+              </button>
+            </h4>
+            <div id={panelId} role="region" aria-labelledby={buttonId} className={isOpen ? 'min-h-0 flex-1 overflow-y-auto overscroll-contain px-4 pb-5 pt-2 scrollbar scrollbar-track-gray-400/20 scrollbar-thumb-[#ff25e2]/30 sm:px-6 sm:pb-6' : 'hidden'}>
+            <div className={`grid gap-6 ${project.gallery.length ? 'lg:grid-cols-2' : ''}`}>
               <div>
-                <p className="text-xs uppercase tracking-[3px] text-[#ff8af0]">
-                  {project.category || 'Project'}
-                </p>
-                <h4 className="mt-3 text-2xl font-semibold leading-tight sm:text-3xl">
-                  {project.title}
-                </h4>
-                {project.role && <p className="mt-2 text-sm text-gray-400">{project.role}</p>}
-                <p className="mt-5 leading-relaxed text-gray-200">{project.summary}</p>
+                {project.role && <p className="text-sm text-gray-400">{project.role}</p>}
+                <p className="mt-3 leading-relaxed text-gray-200">{project.summary}</p>
               </div>
 
               {project.gallery.length > 0 && (
@@ -74,8 +99,9 @@ export default function Projects({ projects }: Props) {
               </div>
 
             </div>
+            </div>
           </article>
-        ))}
+        );})}
       </div>
     </div>
   );
