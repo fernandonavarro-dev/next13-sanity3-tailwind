@@ -15,7 +15,7 @@ body {
 
 @layer components {
   .heroButton {
-    @apply rounded-full border border-[#242424] px-4 py-3 text-sm tracking-widest text-gray-300 transition-all hover:border-[#ff25e2]/40 hover:text-[#ff25e2] focus-visible:border-[#ff25e2] focus-visible:text-[#ff25e2];
+    @apply rounded-full border border-[#242424] px-4 py-3 text-sm tracking-widest text-gray-500 transition-all hover:border-[#ff25e2]/40 hover:text-[#ff25e2] focus-visible:border-[#ff25e2] focus-visible:text-[#ff25e2] sm:px-6 sm:py-6;
   }
 
   .contactFields {

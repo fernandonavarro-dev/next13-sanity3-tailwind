@@ -26,7 +26,7 @@ interface PageInfo extends Base {
   heroImage: Image;
   heroImageUrl: string;
   heroHeadline?: string;
-  heroTagline?: string;
+  heroLines?: string[];
   name: string;
   phoneNumber: string;
   profilePic: Image;
