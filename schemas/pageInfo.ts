@@ -55,6 +55,7 @@ export default defineType({
     defineField({
       name: 'backgroundInformation',
       title: 'About text',
+      description: 'Lead with GIS web work for utilities and infrastructure. The old e-commerce bio is replaced by GIS-focused copy until you publish a new one.',
       type: 'text',
     }),
     defineField({
@@ -73,11 +74,6 @@ export default defineType({
       type: 'string',
     }),
     defineField({
-      name: 'phoneNumber',
-      title: 'Public phone number',
-      type: 'string',
-    }),
-    defineField({
       name: 'email',
       title: 'Public email',
       type: 'string',
@@ -85,8 +81,8 @@ export default defineType({
     }),
     defineField({
       name: 'address',
-      title: 'Public location (not a street address)',
-      description: 'For example: San Francisco Bay Area. This is shown publicly.',
+      title: 'Public work location',
+      description: 'Defaults to “Remote (US)” while the legacy Bay Area value remains. Do not enter a street address.',
       type: 'string',
     }),
     defineField({
@@ -105,7 +101,7 @@ export default defineType({
     defineField({
       name: 'seoDescription',
       title: 'Search description',
-      description: 'Short description for search and link previews.',
+      description: 'Short description for search and link previews. Leave empty to use the GIS-focused default.',
       type: 'text',
       rows: 2,
     }),

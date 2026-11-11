@@ -10,13 +10,23 @@ import Skills from '../../components/Skills';
 import Projects from '../../components/Projects';
 import type { Metadata } from 'next';
 import { orderProjects } from '../../lib/projectOrder';
+import { getAboutText, getLocation, getSeoDescription } from '../../lib/profileCopy';
 
 // Sanity publishes appear without a code deployment; drafts remain private.
 export const revalidate = 60;
 
 const queryPageInfo = groq`
   (*[_type == 'pageInfo'] | order(_createdAt desc))[0] {
-    ...,
+    name,
+    heroHeadline,
+    heroLines,
+    heroImage,
+    profilePic,
+    backgroundInformation,
+    email,
+    address,
+    contactIntro,
+    seoDescription,
     "heroImageUrl": coalesce(heroImage.asset->url, heroImageUrl),
     "profilePicUrl": coalesce(profilePic.asset->url, profilePicUrl),
     "resumeUrl": resume.asset->url,
@@ -49,9 +59,14 @@ const queryProjects = groq`
 
 export async function generateMetadata(): Promise<Metadata> {
   const pageInfo = await client.fetch<PageInfo | null>(queryPageInfo);
+  const name = pageInfo?.name?.trim() || 'Fernando Navarro';
+  const title = `${name} | GIS Web Developer`;
+  const description = getSeoDescription(pageInfo?.seoDescription);
   return {
-    title: `${pageInfo?.name || 'Fernando Navarro'} | Portfolio`,
-    description: pageInfo?.seoDescription || 'Portfolio of Fernando Navarro, full-stack and GIS developer.',
+    title,
+    description,
+    openGraph: { title, description, type: 'website', url: 'https://fn-dev.com' },
+    twitter: { card: 'summary', title, description },
   };
 }
 
@@ -68,16 +83,22 @@ export default async function HomePage() {
     throw new Error('Create and publish a Profile and homepage document in Sanity Studio.');
   }
 
+  const publicPageInfo = {
+    ...pageInfo,
+    backgroundInformation: getAboutText(pageInfo.backgroundInformation),
+    address: getLocation(pageInfo.address),
+  };
+
   return (
     <div className="z-0 h-[100svh] pb-[env(safe-area-inset-bottom)] snap-y snap-mandatory overflow-y-scroll bg-[rgb(36,36,36)] text-white scrollbar overflow-x-hidden scrollbar-track-gray-400/20 scrollbar-thumb-[#ff25e2]/20">
       <Header socials={socials} email={pageInfo.email || 'fn@fn-dev.com'} />
 
       <section id="hero" className="snap-center">
-        <Hero pageInfo={pageInfo} />
+        <Hero pageInfo={publicPageInfo} />
       </section>
 
       <section id="about" className="snap-center">
-        <About pageInfo={pageInfo} />
+        <About pageInfo={publicPageInfo} />
       </section>
 
       <section id="experience" className="snap-center">
@@ -93,7 +114,7 @@ export default async function HomePage() {
       </section>
 
       <section id="contact" className="snap-start">
-        <Contact pageInfo={pageInfo} />
+        <Contact pageInfo={publicPageInfo} />
       </section>
 
       <footer className="sticky bottom-2 sm:bottom-5 w-full">
