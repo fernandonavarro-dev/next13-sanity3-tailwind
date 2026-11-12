@@ -1,5 +1,6 @@
 import starterCaseStudies from '../data/caseStudies.json';
 import { isLegacyProject } from './projectOrder';
+import { projectImageHref } from './firstPartyMedia';
 
 export type ProjectImage = { url: string; caption?: string; alt: string };
 export type ProjectMetric = { value: string; label: string; status: string; context: string };
@@ -26,7 +27,7 @@ export type PortfolioProject = {
 
 function fromSanity(project: Project, starter?: PortfolioProject): PortfolioProject {
   const gallery = project.gallery?.map((image) => ({
-    url: image.url || '',
+    url: image.url ? projectImageHref(image.url) : '',
     caption: image.caption,
     alt: image.alt || project.title,
   })).filter((image) => image.url);
@@ -46,7 +47,7 @@ function fromSanity(project: Project, starter?: PortfolioProject): PortfolioProj
     businessImpact: project.businessImpact || starter?.businessImpact,
     metric: project.metric?.value ? project.metric : starter?.metric,
     gallery: gallery?.length ? gallery : (project.imageUrl
-      ? [{ url: project.imageUrl, alt: project.image?.alt || project.title }]
+      ? [{ url: projectImageHref(project.imageUrl), alt: project.image?.alt || project.title }]
       : starter?.gallery ?? []),
     displayOrder: project.displayOrder ?? starter?.displayOrder ?? 9999,
     linkToBuild: project.linkToBuild,

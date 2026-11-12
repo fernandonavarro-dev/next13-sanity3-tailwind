@@ -10,9 +10,16 @@ export const defaultPgePoints = [
 const legacyPgeLead = 'Contribute to the development of web applications and dashboards focused on optimizing operational efficiencies';
 
 export function publicExperience(experience: Experience): Experience {
-  if (experience.publicPoints?.length) return { ...experience, points: experience.publicPoints };
-  if (experience.company?.trim() === 'PG&E' && experience.points?.[0]?.startsWith(legacyPgeLead)) {
-    return { ...experience, points: defaultPgePoints };
+  const publicImage = experience.company?.trim() === 'University of California Transportation Center'
+    ? {
+      ...experience,
+      companyImageUrl: '/experience/uctc-mark.svg',
+      companyImage: { ...experience.companyImage, alt: 'UCTC initials graphic' },
+    }
+    : experience;
+  if (publicImage.publicPoints?.length) return { ...publicImage, points: publicImage.publicPoints };
+  if (publicImage.company?.trim() === 'PG&E' && publicImage.points?.[0]?.startsWith(legacyPgeLead)) {
+    return { ...publicImage, points: defaultPgePoints };
   }
-  return experience;
+  return publicImage;
 }

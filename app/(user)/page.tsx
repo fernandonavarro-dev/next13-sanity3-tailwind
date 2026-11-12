@@ -13,6 +13,7 @@ import type { Metadata } from 'next';
 import { selectPortfolioProjects } from '../../lib/portfolioProjects';
 import { getAboutText, getLocation, getSeoDescription } from '../../lib/profileCopy';
 import { publicExperience } from '../../lib/experienceCopy';
+import { resumeHref } from '../../lib/firstPartyMedia';
 
 // Sanity publishes appear without a code deployment; drafts remain private.
 export const revalidate = 60;
@@ -97,7 +98,6 @@ export default async function HomePage() {
     address: getLocation(pageInfo.address),
   };
   const visibleSkills = skills.filter((skill) => !skill.hidden);
-  const hasTypeScriptRecord = skills.some((skill) => skill.title.trim().toLowerCase() === 'typescript');
 
   return (
     <div className="z-0 h-[100svh] pb-[env(safe-area-inset-bottom)] snap-y snap-mandatory overflow-y-scroll bg-[rgb(36,36,36)] text-white scrollbar overflow-x-hidden scrollbar-track-gray-400/20 scrollbar-thumb-[#ff25e2]/20">
@@ -116,7 +116,7 @@ export default async function HomePage() {
       </section>
 
       <section id="skills" className="snap-start">
-        <Skills skills={visibleSkills} hasTypeScriptRecord={hasTypeScriptRecord} />
+        <Skills skills={skills} />
       </section>
 
       <section id="projects" className="snap-center">
@@ -132,7 +132,7 @@ export default async function HomePage() {
           <span />
           <BackToTop />
           <a
-            href={pageInfo.resumeUrl || '/Fernando-Navarro-Resume.pdf'}
+            href={resumeHref}
             download
             className="justify-self-end flex items-center text-xs md:text-sm uppercase text-gray-400 p-2 rounded-xl hover:bg-[#ff25e2]/20"
           >
