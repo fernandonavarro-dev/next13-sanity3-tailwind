@@ -25,7 +25,7 @@ export default function Hero({ pageInfo }: Props) {
       <img
         className="relative mx-auto h-32 w-32 rounded-full object-cover"
         src={pageInfo.heroImageUrl}
-        alt={pageInfo.heroImage?.alt || `${pageInfo.name} portrait`}
+        alt={pageInfo.heroImage?.alt || `${pageInfo.name || 'Fernando Navarro'} in a white shirt, looking to the side`}
       />
       <div className="z-20 max-w-4xl">
         <p className="pb-3 text-xs uppercase tracking-[5px] text-gray-400 sm:tracking-[8px]">
@@ -40,7 +40,7 @@ export default function Hero({ pageInfo }: Props) {
         >
           <span aria-hidden="true">
             {text}
-            <Cursor cursorColor="#ff25e2" />
+            {text && <Cursor cursorColor="#ff25e2" />}
           </span>
         </h2>
         <nav aria-label="Portfolio sections" className="mt-8 flex flex-wrap justify-center gap-2">
