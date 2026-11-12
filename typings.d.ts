@@ -77,6 +77,9 @@ interface Project extends Base {
   imageUrl: string;
   linkToBuild: string;
   summary: string;
+  problem?: string;
+  solution?: string;
+  result?: string;
   technologies: Technology[];
   repositoryUrl?: string;
   slug?: { current: string };

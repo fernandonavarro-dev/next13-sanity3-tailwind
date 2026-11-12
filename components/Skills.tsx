@@ -4,11 +4,10 @@ import { groupStack, skillGroups } from '../lib/skillGroups';
 
 type Props = {
   skills: Skill[];
-  hasTypeScriptRecord: boolean;
 };
 
-export default function Skills({ skills, hasTypeScriptRecord }: Props) {
-  const grouped = groupStack(skills, hasTypeScriptRecord);
+export default function Skills({ skills }: Props) {
+  const grouped = groupStack(skills);
   return (
     <div className="relative mx-auto flex min-h-[100svh] max-w-5xl flex-col justify-center px-6 pb-20 pt-28 sm:px-10">
       <h3 className="text-center text-2xl uppercase tracking-[12px] text-gray-500 sm:tracking-[20px]">
