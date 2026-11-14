@@ -58,6 +58,9 @@ export default defineType({
       type: 'text',
     }),
     defineField({ name: 'role', title: 'My role', type: 'string' }),
+    defineField({ name: 'problem', title: 'Problem', type: 'text', rows: 2, description: 'The user need or operational challenge. Shown with Solution and Result when all three are filled.' }),
+    defineField({ name: 'solution', title: 'What I built', type: 'text', rows: 2 }),
+    defineField({ name: 'result', title: 'Result', type: 'text', rows: 2, description: 'Describe the outcome accurately. Qualify broader program results or forecasts.' }),
     defineField({ name: 'techLabels', title: 'Technology labels', type: 'array', of: [{ type: 'string' }] }),
     defineField({ name: 'bullets', title: 'What I built', type: 'array', of: [{ type: 'string' }] }),
     defineField({

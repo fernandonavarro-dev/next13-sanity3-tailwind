@@ -1,5 +1,6 @@
 import starterCaseStudies from '../data/caseStudies.json';
 import { isLegacyProject } from './projectOrder';
+import { projectImageHref } from './firstPartyMedia';
 
 export type ProjectImage = { url: string; caption?: string; alt: string };
 export type ProjectMetric = { value: string; label: string; status: string; context: string };
@@ -10,6 +11,9 @@ export type PortfolioProject = {
   title: string;
   role?: string;
   summary: string;
+  problem?: string;
+  solution?: string;
+  result?: string;
   category?: string;
   techLabels: string[];
   bullets: string[];
@@ -23,7 +27,7 @@ export type PortfolioProject = {
 
 function fromSanity(project: Project, starter?: PortfolioProject): PortfolioProject {
   const gallery = project.gallery?.map((image) => ({
-    url: image.url || '',
+    url: image.url ? projectImageHref(image.url) : '',
     caption: image.caption,
     alt: image.alt || project.title,
   })).filter((image) => image.url);
@@ -34,13 +38,16 @@ function fromSanity(project: Project, starter?: PortfolioProject): PortfolioProj
     title: project.title || starter?.title || '',
     role: project.role || starter?.role,
     summary: project.summary || starter?.summary || '',
+    problem: project.problem || starter?.problem,
+    solution: project.solution || starter?.solution,
+    result: project.result || starter?.result,
     category: project.category || starter?.category,
-    techLabels: project.techLabels ?? starter?.techLabels ?? [],
-    bullets: project.bullets ?? starter?.bullets ?? [],
+    techLabels: project.techLabels?.length ? project.techLabels : starter?.techLabels ?? [],
+    bullets: project.bullets?.length ? project.bullets : starter?.bullets ?? [],
     businessImpact: project.businessImpact || starter?.businessImpact,
     metric: project.metric?.value ? project.metric : starter?.metric,
-    gallery: gallery ?? (project.imageUrl
-      ? [{ url: project.imageUrl, alt: project.image?.alt || project.title }]
+    gallery: gallery?.length ? gallery : (project.imageUrl
+      ? [{ url: projectImageHref(project.imageUrl), alt: project.image?.alt || project.title }]
       : starter?.gallery ?? []),
     displayOrder: project.displayOrder ?? starter?.displayOrder ?? 9999,
     linkToBuild: project.linkToBuild,
@@ -52,7 +59,7 @@ export function selectPortfolioProjects(projects: Project[]): PortfolioProject[]
   const starter: PortfolioProject[] = starterCaseStudies.map((study) => ({
     ...study,
     id: `starter-${study.slug}`,
-    category: 'Utility GIS case study',
+    category: 'category' in study && typeof study.category === 'string' ? study.category : 'Utility GIS case study',
   }));
   const bySlug = new Map(projects.filter((project) => project.slug?.current)
     .map((project) => [project.slug!.current, project]));
