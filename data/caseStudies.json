@@ -69,13 +69,8 @@
     "gallery": [
       {
         "url": "/case-studies/utility-operations-dashboard-dark.png",
-        "caption": "Dark-theme operations overview",
-        "alt": "Dark GIS operations dashboard showing a map, outage symbols, filters, KPI panels, a chart, and selectable report tabs."
-      },
-      {
-        "url": "/case-studies/utility-operations-dashboard-light.png",
-        "caption": "Light-theme dashboard with geographic summaries",
-        "alt": "Light GIS dashboard showing a map, summary cards, geographic data table, charts, and operational filters."
+        "caption": "Illustrative operations dashboard with sample data",
+        "alt": "Sample-data GIS operations dashboard showing a map of field service requests, filters, KPI panels, charts, and report tabs."
       }
     ],
     "problem": "Operations teams needed one geographic view of outages, crew status, and customer impact instead of disconnected reports.",
@@ -113,8 +108,8 @@
     "gallery": [
       {
         "url": "/case-studies/arcgis-spatial-search-work-planning.png",
-        "caption": "Near Me buffer search with linked feature table",
-        "alt": "ArcGIS map displaying a circular search area, highlighted line features, a Near Me search panel, counts, and a feature results table."
+        "caption": "Illustrative Near Me spatial search with sample data",
+        "alt": "Sample-data GIS map showing a circular Near Me search area, highlighted features, search counts, and a linked results table."
       }
     ],
     "problem": "Planners needed to find nearby jobs and assets without repeating manual map and spreadsheet searches.",
@@ -146,8 +141,8 @@
     "gallery": [
       {
         "url": "/case-studies/electric-reliability-kpi-dashboard.png",
-        "caption": "Electric reliability network map and KPI panel",
-        "alt": "Electric reliability GIS dashboard with a regional network map, geographic selector, and performance statistics sidebar."
+        "caption": "Illustrative regional performance dashboard with sample data",
+        "alt": "Sample-data GIS performance dashboard showing a regional service-request map, geographic selector, and KPI sidebar."
       }
     ],
     "problem": "Reliability teams needed to compare outage history and circuit performance across service areas.",
