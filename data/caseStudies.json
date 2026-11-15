@@ -177,7 +177,13 @@
       "context": "Forecast for the broader transmission work-bundling program on a 2025 release slide; not an individual developer result."
     },
     "displayOrder": 40,
-    "gallery": [],
+    "gallery": [
+      {
+        "url": "/case-studies/transmission-work-bundling-planning.png",
+        "caption": "Illustrative work-bundling map and funded work orders with sample data",
+        "alt": "Sample-data GIS work-bundling interface showing priority work on a map, work-order filters, and a funded work-orders table."
+      }
+    ],
     "problem": "Transmission planners needed a clearer way to discover and coordinate spatially related projects and vegetation work.",
     "solution": "I added map layers, buffer and Near Me searches, exports, and reporting improvements across releases.",
     "result": "The work supported planning coordination; the broader program forecast 2026 savings, not realized savings attributable to these tools."
