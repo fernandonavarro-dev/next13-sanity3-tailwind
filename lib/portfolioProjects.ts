@@ -25,19 +25,12 @@ export type PortfolioProject = {
   repositoryUrl?: string;
 };
 
-function hasExactDollarFigure(metric: ProjectMetric): boolean {
-  return /\$\s*[\d.,]|\bUSD\s*[\d.,]|\b[\d.,]+\s*(?:million|billion)?\s*dollars?\b/i
-    .test([metric.value, metric.label, metric.status, metric.context].join(' '));
-}
-
 function fromSanity(project: Project, starter?: PortfolioProject): PortfolioProject {
   const gallery = project.gallery?.map((image) => ({
     url: image.url ? projectImageHref(image.url) : '',
     caption: image.caption,
     alt: image.alt || project.title,
   })).filter((image) => image.url);
-
-  const metric = project.metric?.value ? project.metric : starter?.metric;
 
   return {
     id: project._id,
@@ -52,7 +45,7 @@ function fromSanity(project: Project, starter?: PortfolioProject): PortfolioProj
     techLabels: project.techLabels?.length ? project.techLabels : starter?.techLabels ?? [],
     bullets: project.bullets?.length ? project.bullets : starter?.bullets ?? [],
     businessImpact: project.businessImpact || starter?.businessImpact,
-    metric: metric && !hasExactDollarFigure(metric) ? metric : undefined,
+    metric: project.metric?.value ? project.metric : starter?.metric,
     gallery: gallery?.length ? gallery : (project.imageUrl
       ? [{ url: projectImageHref(project.imageUrl), alt: project.image?.alt || project.title }]
       : starter?.gallery ?? []),
