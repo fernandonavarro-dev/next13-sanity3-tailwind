@@ -5,7 +5,7 @@ export const defaultPgePoints = [
   'Built a popup joining funded jobs to related permits, and commercial-customer filtering with ArcGIS queries and memoized MUI Autocomplete search.',
   'Fixed layer-list state persistence and added saved, named filter views using signal-based state; extracted shared behavior into unit-tested helpers.',
   'Contributed GIS views to a broader Situational Report product credited with 6,800 manual hours saved to date on a 2025 program slide; this is a team-level result, not my individual total.',
-  'Developed spatial-search tools within an electric-distribution work-bundling program that reported $56.6M in total savings through October on a 2025 program slide, including megabundles; the result is program-wide.',
+  'Developed critical spatial-search and planning enhancements for an electric-distribution work-bundling tool, supporting a broader program that reported $56.6M in waste-elimination savings through October 2025.',
   'Enhanced transmission planning maps and Near Me workflows within a program forecasting $4.4M in 2026 savings; that amount is projected, not realized.',
 ];
 
