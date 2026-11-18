@@ -8,9 +8,12 @@ import Experience from '../../components/Experience';
 import Contact from '../../components/Conatact';
 import Skills from '../../components/Skills';
 import Projects from '../../components/Projects';
+import BackToTop from '../../components/BackToTop';
 import type { Metadata } from 'next';
-import { orderProjects } from '../../lib/projectOrder';
+import { selectPortfolioProjects } from '../../lib/portfolioProjects';
 import { getAboutText, getLocation, getSeoDescription } from '../../lib/profileCopy';
+import { publicExperience } from '../../lib/experienceCopy';
+import { resumeHref } from '../../lib/firstPartyMedia';
 
 // Sanity publishes appear without a code deployment; drafts remain private.
 export const revalidate = 60;
@@ -44,16 +47,22 @@ const queryExperience = groq`
   } | order(coalesce(displayOrder, 9999) asc, dateEnded desc)
 `;
 const querySkills = groq`
-  *[_type == 'skill' && coalesce(hidden, false) == false] {
-    ...,
+  *[_type == 'skill'] {
+    _id,
+    title,
+    category,
+    displayOrder,
+    hidden,
+    image,
     "imageUrl": coalesce(image.asset->url, imageUrl),
   } | order(coalesce(displayOrder, 9999) asc, title desc)
 `;
 
 const queryProjects = groq`
-  *[_type == 'project' && coalesce(hidden, false) == false] {
+  *[_type == 'project'] {
     ...,
     "imageUrl": coalesce(image.asset->url, imageUrl),
+    "gallery": gallery[] { ..., "url": coalesce(image.asset->url, url) },
   }
 `;
 
@@ -88,6 +97,7 @@ export default async function HomePage() {
     backgroundInformation: getAboutText(pageInfo.backgroundInformation),
     address: getLocation(pageInfo.address),
   };
+  const visibleSkills = skills.filter((skill) => !skill.hidden);
 
   return (
     <div className="z-0 h-[100svh] pb-[env(safe-area-inset-bottom)] snap-y snap-mandatory overflow-y-scroll bg-[rgb(36,36,36)] text-white scrollbar overflow-x-hidden scrollbar-track-gray-400/20 scrollbar-thumb-[#ff25e2]/20">
@@ -102,15 +112,15 @@ export default async function HomePage() {
       </section>
 
       <section id="experience" className="snap-center">
-        <Experience experiences={experience} skills={skills} />
+        <Experience experiences={experience.map(publicExperience)} skills={visibleSkills} />
       </section>
 
       <section id="skills" className="snap-start">
         <Skills skills={skills} />
       </section>
 
-      <section id="projects" className="snap-start">
-        <Projects projects={orderProjects(projects)} />
+      <section id="projects" className="snap-center">
+        <Projects projects={selectPortfolioProjects(projects)} />
       </section>
 
       <section id="contact" className="snap-start">
@@ -120,24 +130,9 @@ export default async function HomePage() {
       <footer className="sticky bottom-2 sm:bottom-5 w-full">
         <div className="grid grid-cols-3 items-end px-5 md:px-10 xl:px-24 py-1 md:py-1">
           <span />
-          <a href="#hero" className="justify-self-center">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              strokeWidth={1.5}
-              stroke="currentColor"
-              className="h-6 w-6 rounded-full filter hover:text-[#ff25e2]/40"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25"
-              />
-            </svg>
-          </a>
+          <BackToTop />
           <a
-            href={pageInfo.resumeUrl || '/Fernando-Navarro-Resume.pdf'}
+            href={resumeHref}
             download
             className="justify-self-end flex items-center text-xs md:text-sm uppercase text-gray-400 p-2 rounded-xl hover:bg-[#ff25e2]/20"
           >

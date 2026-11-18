@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" role="img" aria-labelledby="title">
+  <title id="title">UCTC initials graphic</title>
+  <circle cx="200" cy="200" r="195" fill="#173247"/>
+  <circle cx="200" cy="200" r="174" fill="none" stroke="#74c4d5" stroke-width="5"/>
+  <path d="M94 138h212M94 262h212" stroke="#74c4d5" stroke-width="7" stroke-linecap="round"/>
+  <path d="M135 112v52m130-52v52M135 236v52m130-52v52" stroke="#74c4d5" stroke-width="5" stroke-linecap="round"/>
+  <text x="200" y="224" text-anchor="middle" fill="#fff" font-family="Arial, Helvetica, sans-serif" font-size="79" font-weight="700" letter-spacing="4">UCTC</text>
+</svg>

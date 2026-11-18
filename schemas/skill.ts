@@ -14,17 +14,19 @@ export default defineType({
     }),
     defineField({
       name: 'displayOrder', title: 'Display order',
-      description: 'Lower numbers appear first. Empty items follow ordered items.',
+      description: 'Lower numbers appear first within the group. Empty items use the default order.',
       type: 'number', validation: (Rule) => Rule.integer().min(0),
     }),
-    defineField({ name: 'hidden', title: 'Hide from portfolio', type: 'boolean', initialValue: false }),
     defineField({
-      name: 'progress',
-      title: 'Progress',
-      type: 'number',
-      description: 'Progress of skill from 0 to 100%',
-      validation: (Rule) => Rule.integer().min(0).max(100),
+      name: 'category', title: 'Stack group', type: 'string',
+      description: 'Choose where this skill appears. Existing skills use sensible defaults until assigned.',
+      options: { list: [
+        { title: 'GIS & mapping', value: 'gis' },
+        { title: 'Frontend', value: 'frontend' },
+        { title: 'Supporting tools', value: 'tools' },
+      ], layout: 'radio' },
     }),
+    defineField({ name: 'hidden', title: 'Hide from portfolio', type: 'boolean', initialValue: false }),
     defineField({
       name: 'image',
       title: 'Image',

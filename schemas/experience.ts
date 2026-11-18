@@ -63,6 +63,11 @@ export default defineType({
       type: 'array',
       of: [{ type: 'string' }],
     }),
+    defineField({
+      name: 'publicPoints', title: 'Public portfolio bullets', type: 'array',
+      description: 'Optional replacement for legacy Points. Use verified, attributed outcomes; distinguish forecasts from realized results.',
+      of: [{ type: 'string' }],
+    }),
   ],
   preview: { select: { title: 'jobTitle', subtitle: 'company', media: 'companyImage' } },
 });

@@ -1,0 +1,191 @@
+[
+  {
+    "slug": "rural-home-guide",
+    "title": "Rural Home Guide",
+    "category": "Live GIS product",
+    "role": "Product & GIS Web Developer",
+    "summary": "A bilingual rural-homebuying guide with an interactive county explorer spanning 21 states. It brings together land-value, hazard, broadband, and USDA loan-eligibility data, then connects buyers to parcel-first due-diligence checklists.",
+    "techLabels": [
+      "Next.js",
+      "TypeScript",
+      "Tailwind CSS",
+      "MapLibre GL JS",
+      "USDA ArcGIS REST"
+    ],
+    "bullets": [
+      "Built a MapLibre county explorer with switchable layers, source and vintage labels, and shareable state and county views.",
+      "Integrated USDA Rural Development's live eligibility overlay with an official exact-address checker; county data is presented as screening context, not parcel verification.",
+      "Connected map exploration to county checklists that guide buyers to official records for zoning, access, water, hazards, and other property questions."
+    ],
+    "businessImpact": "A live, public product connecting GIS screening with practical rural property due diligence; currently covers 135 researched areas in 21 states.",
+    "displayOrder": 5,
+    "linkToBuild": "https://www.ruralhomeguide.com/explore",
+    "gallery": [
+      {
+        "url": "/case-studies/rhg-01-explorer-farm-value-21-states.png",
+        "caption": "County explorer: farm-value screening across 21 states",
+        "alt": "Rural Home Guide county explorer showing farm-value colors, 135 researched areas, map layer choices, and a value legend."
+      },
+      {
+        "url": "/case-studies/rhg-02-usda-eligibility-overlay-wa.png",
+        "caption": "Washington USDA eligibility screening",
+        "alt": "Washington map with USDA ineligible areas shaded orange and a link to the official exact-address checker."
+      },
+      {
+        "url": "/case-studies/rhg-03-okanogan-county-checklist.png",
+        "caption": "Parcel-first Okanogan County checklist",
+        "alt": "Okanogan County buyer checklist starting with a parcel number and linking to the county assessor map."
+      }
+    ]
+  },
+  {
+    "slug": "enterprise-gis-operations-dashboard",
+    "title": "Enterprise GIS Operations & Outage Dashboard",
+    "role": "GIS Front-End Engineer | ArcGIS & React Integration",
+    "summary": "A map-centric operations dashboard combining geographic filters, outage and crew status visualization, KPI reporting, charts, and interactive data tables. Built for enterprise workflows where teams need a consolidated picture of operational activity.",
+    "techLabels": [
+      "React",
+      "TypeScript",
+      "ArcGIS Maps SDK for JavaScript",
+      "ArcGIS Feature Services",
+      "Redux Toolkit",
+      "Data Visualization"
+    ],
+    "bullets": [
+      "Developed interactive web GIS components that combine operational maps, performance KPIs, charts, and reporting tools.",
+      "Implemented geographic and status filters to connect map features with outage, crew-status, and customer-impact views.",
+      "Built data tables and visualizations that respond to the selected geography and operational filters.",
+      "Supported light and dark interface themes for different user preferences and working environments.",
+      "Helped streamline how operations teams explore geographically distributed activity and prepare situation reports."
+    ],
+    "businessImpact": "Contributed to GIS reporting workflows that help teams prepare situation reports.",
+    "metric": {
+      "value": "6,800",
+      "label": "manual hours saved to date",
+      "status": "Reported program result",
+      "context": "Reported for the broader Situational Report capability on a 2025 program slide; not an individual developer result. Exact as-of date was not specified."
+    },
+    "displayOrder": 10,
+    "gallery": [
+      {
+        "url": "/case-studies/utility-operations-dashboard-dark.png",
+        "caption": "Illustrative operations dashboard with sample data",
+        "alt": "Sample-data GIS operations dashboard showing a map of field service requests, filters, KPI panels, charts, and report tabs."
+      }
+    ],
+    "problem": "Operations teams needed one geographic view of outages, crew status, and customer impact instead of disconnected reports.",
+    "solution": "I built React and ArcGIS map views with geographic filters, KPI panels, charts, and linked data tables.",
+    "result": "The dashboard supported faster situation reporting; a broader 2025 program slide reported 6,800 manual hours saved to date, not solely by my work."
+  },
+  {
+    "slug": "gis-spatial-search-work-planning",
+    "title": "GIS Spatial Search & Work Planning",
+    "role": "GIS Web Developer | Spatial Analysis & Map Integration",
+    "summary": "An ArcGIS-based spatial search interface that helps users discover nearby work and assets through buffer queries, layer selection, map highlighting, and an interactive results table. Useful for infrastructure planning and coordinating geographically related work.",
+    "techLabels": [
+      "React",
+      "TypeScript",
+      "ArcGIS Maps SDK for JavaScript",
+      "ArcGIS Feature Services",
+      "Spatial Queries",
+      "Feature Tables"
+    ],
+    "bullets": [
+      "Developed distance-based Near Me search tools for jobs, assets, and infrastructure features.",
+      "Connected configurable search geometry and units with ArcGIS spatial queries.",
+      "Integrated multiple map layers, feature counts, spatial selections, and tabular results.",
+      "Enabled users to visualize work occurring in a common area or along related infrastructure.",
+      "Supported planning and work-bundling workflows intended to reduce manual GIS analysis and improve coordination."
+    ],
+    "businessImpact": "Built spatial-search tools to support work planning and coordination.",
+    "metric": {
+      "value": "$56.6M",
+      "label": "total bundling savings",
+      "status": "Reported program result",
+      "context": "Reported for the overall electric-distribution work-bundling program, including megabundles, through October on a 2025 program slide; not attributable solely to these spatial-search tools."
+    },
+    "displayOrder": 20,
+    "gallery": [
+      {
+        "url": "/case-studies/arcgis-spatial-search-work-planning.png",
+        "caption": "Illustrative Near Me spatial search with sample data",
+        "alt": "Sample-data GIS map showing a circular Near Me search area, highlighted features, search counts, and a linked results table."
+      }
+    ],
+    "problem": "Planners needed to find nearby jobs and assets without repeating manual map and spreadsheet searches.",
+    "solution": "I built buffer-based Near Me searches with selectable layers, highlighted features, counts, and results tables.",
+    "result": "The tools helped teams identify related work for bundling; the wider distribution program reported savings that cannot be attributed to this feature alone."
+  },
+  {
+    "slug": "electric-reliability-kpi-dashboard",
+    "title": "Electric Reliability & Circuit Performance Dashboard",
+    "role": "GIS Web Developer | Reliability Analytics & KPI Integration",
+    "summary": "A geospatial analytics dashboard for exploring electric distribution reliability. It brings network map layers, geographic selectors, outage summaries, and reliability indicators into one decision-support interface.",
+    "techLabels": [
+      "React",
+      "TypeScript",
+      "ArcGIS Maps SDK for JavaScript",
+      "ArcGIS Feature Services",
+      "KPI Reporting",
+      "Spatial Filtering"
+    ],
+    "bullets": [
+      "Developed web GIS features to visualize electric network assets and reliability information by geography.",
+      "Implemented region, division, district, and circuit selection workflows for targeted analysis.",
+      "Integrated reliability measures such as CEMI, CAIDI, SAIDI, SAIFI, and outage history into KPI views.",
+      "Built map-linked filtering and reporting components to help evaluate circuit performance.",
+      "Supported reliability planning workflows for identifying areas requiring closer investigation and prioritization."
+    ],
+    "businessImpact": "Supported geographic reliability analysis and circuit prioritization.",
+    "displayOrder": 30,
+    "gallery": [
+      {
+        "url": "/case-studies/electric-reliability-kpi-dashboard.png",
+        "caption": "Illustrative regional performance dashboard with sample data",
+        "alt": "Sample-data GIS performance dashboard showing a regional service-request map, geographic selector, and KPI sidebar."
+      }
+    ],
+    "problem": "Reliability teams needed to compare outage history and circuit performance across service areas.",
+    "solution": "I built map-linked geographic and circuit selectors alongside reliability KPI and outage views.",
+    "result": "The dashboard supported circuit investigation and prioritization; no project-specific savings figure is claimed."
+  },
+  {
+    "slug": "transmission-work-bundling-planning",
+    "title": "Transmission Work Bundling & Planning Tools",
+    "role": "GIS Web Developer | Spatial Search & Workflow Enhancements",
+    "summary": "A transmission-focused mapping and work-planning platform that evolved through feature releases including buffer / Near Me searches, data overlays, exports, and reporting to support coordinated work planning.",
+    "techLabels": [
+      "React",
+      "TypeScript",
+      "ArcGIS Maps SDK for JavaScript",
+      "ArcGIS Feature Services",
+      "Spatial Queries",
+      "GIS Reporting"
+    ],
+    "bullets": [
+      "Enhanced map-based tools for viewing transmission projects, tags, and vegetation-related work.",
+      "Added buffer / Near Me workflows for finding work items near a selected area.",
+      "Supported layer visualization, export, and reporting enhancements across successive releases.",
+      "Helped make spatially related jobs easier to discover and coordinate for planning teams.",
+      "Contributed to a broader transmission work-planning initiative with forecast efficiency savings."
+    ],
+    "businessImpact": "Supported transmission work planning across multiple releases.",
+    "metric": {
+      "value": "$4.4M",
+      "label": "projected 2026 savings",
+      "status": "Program forecast, not realized",
+      "context": "Forecast for the broader transmission work-bundling program on a 2025 release slide; not an individual developer result."
+    },
+    "displayOrder": 40,
+    "gallery": [
+      {
+        "url": "/case-studies/transmission-work-bundling-planning.png",
+        "caption": "Illustrative work-bundling map and funded work orders with sample data",
+        "alt": "Sample-data GIS work-bundling interface showing priority work on a map, work-order filters, and a funded work-orders table."
+      }
+    ],
+    "problem": "Transmission planners needed a clearer way to discover and coordinate spatially related projects and vegetation work.",
+    "solution": "I added map layers, buffer and Near Me searches, exports, and reporting improvements across releases.",
+    "result": "The work supported planning coordination; the broader program forecast 2026 savings, not realized savings attributable to these tools."
+  }
+]
